@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en" class="__variable_5cfdac __variable_9a8899 dark">
+<head>
+    <meta charSet="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="preload" href="/_next/static/media/569ce4b8f30dc480-s.p.woff2" as="font" crossOrigin="" type="font/woff2"/>
+    <link rel="preload" href="/_next/static/media/93f479601ee12b01-s.p.woff2" as="font" crossOrigin="" type="font/woff2"/>
+    <link rel="stylesheet" href="/_next/static/css/8e2844b8c04ceda6.css" data-precedence="next"/>
+    <title>NEON</title>
+    <meta name="description" content="NEON"/>
+</head>
+<body class="antialiased">
+    <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4">
+        <div class="flex items-center">
+            <a href="/"><img src="https://ext.same-assets.com/2274058224/3335459291.svg" alt="NEON Logo" class="h-8"/></a>
+        </div>
+        <nav class="flex items-center space-x-6 text-sm font-medium">
+            <a class="text-white hover:text-gray-400" href="/films/all">FILMS</a>
+            <a class="text-white hover:text-gray-400" href="/shop/all">SHOP</a>
+            <button class="text-white hover:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <div class="antialiased">
+        <main class="pt-16">
+            <div class="relative w-full h-screen">
+                <img src="https://www.datocms-assets.com/148598/1745420854-01_the-life-of-chuck_courtesy-of-neon-edited.png" alt="The Life of Chuck" class="w-full h-full object-cover"/>
+                <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black to-transparent w-full">
+                    <h1 class="text-4xl font-bold text-white">The Life of Chuck</h1>
+                    <p class="text-lg text-white">In Theaters 2025</p>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">In Theaters</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <img src="https://www.datocms-assets.com/148598/1745420854-01_the-life-of-chuck_courtesy-of-neon-edited.png" alt="The Life of Chuck" class="w-full h-auto rounded-lg"/>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-semibold">The Life of Chuck</h3>
+                            <p class="text-md text-muted-foreground">2025</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://www.datocms-assets.com/148598/1746629554-together_2160p.png" alt="Together" class="w-full h-auto rounded-lg"/>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-semibold">Together</h3>
+                            <p class="text-md text-muted-foreground">In Theaters Jul 30, 2025</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://www.datocms-assets.com/148598/1750177376-michael-angelo-covino-kyle-marvin-adria-arjona-and-dakota-johnson-in-splitsville-1.jpg" alt="Splitsville" class="w-full h-auto rounded-lg"/>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-semibold">Splitsville</h3>
+                            <p class="text-md text-muted-foreground">In Theaters Aug 22, 2025</p>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://www.datocms-assets.com/148598/1743628975-actor2.png" alt="Sentimental Value" class="w-full h-auto rounded-lg"/>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-semibold">Sentimental Value</h3>
+                            <p class="text-md text-muted-foreground">In Theaters Nov 7, 2025</p>
+                        </div>
+                    </div>
+                     <div>
+                        <img src="[Alpha 이미지 URL]" alt="Alpha" class="w-full h-auto rounded-lg"/>
+                        <div class="mt-4 text-center">
+                            <h3 class="text-lg font-semibold">Alpha</h3>
+                            <p class="text-md text-muted-foreground">Coming Soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Now Available</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div><img src="https://www.datocms-assets.com/148598/1743628632-hoas2.png" alt="Hell of a Summer" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="https://www.datocms-assets.com/148598/1736958628-the-monkey-teaser-poster.avif" alt="The Monkey" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[The Actor 이미지 URL]" alt="The Actor" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Presence 이미지 URL]" alt="Presence" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="https://www.datocms-assets.com/148598/1738602291-66471a87b865daf06bbe15a9_01_longlegs_maikamonroe_courtesyofneon-20-1-202.jpg" alt="Longlegs" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="https://www.datocms-assets.com/148598/1738602282-66bfa5a7c5bdcc3a8107ddef_mikey-20madison-20as-20anora.png" alt="Anora" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[2073 이미지 URL]" alt="2073" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Cuckoo 이미지 URL]" alt="Cuckoo" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Mothers' Instinct 이미지 URL]" alt="Mothers' Instinct" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Immaculate 이미지 URL]" alt="Immaculate" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[The End 이미지 URL]" alt="The End" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Babes 이미지 URL]" alt="Babes" class="w-full h-auto rounded-lg"/></div>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Parasite Collection</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div>
+                        <img src="https://cdn.shopify.com/s/files/1/0617/2885/0112/files/Neon_Parasite_1937x1937_transparent_Shirt_Hoodie_Black_Back.png?v=1743618307" alt="PARASITE Hoodie" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">PARASITE Hoodie</h3><p class="text-md text-muted-foreground">$80 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="https://cdn.shopify.com/s/files/1/0617/2885/0112/files/NEON_PARASITE_TOTE_BAG_01_1937x1937_TRANSPARENT.png?v=1748442407" alt="PARASITE Scholar's Rock Tote" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">PARASITE Scholar's Rock Tote</h3><p class="text-md text-muted-foreground">$30 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="https://cdn.shopify.com/s/files/1/0617/2885/0112/files/Neon_Parasite_1937x1937_transparent_Shirt_ArtTherapy_Back.png?v=1743618527" alt="PARASITE ART THERAPY T-Shirt" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">PARASITE ART THERAPY T-Shirt</h3><p class="text-md text-muted-foreground">$40 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="https://cdn.shopify.com/s/files/1/0617/2885/0112/files/Neon_Parasite_1937x1937_transparent_Shirt_MrKim_Back.png?v=1743618490" alt="PARASITE MR. KIM T-Shirt" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">PARASITE MR. KIM T-Shirt</h3><p class="text-md text-muted-foreground">$40 USD</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Anora Collection</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                     <div>
+                        <img src="[Anora T-Shirt 이미지 1]" alt="ANORA GARDENA CINEMA FOREVER T-Shirt" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">ANORA GARDENA CINEMA FOREVER T-Shirt</h3><p class="text-md text-muted-foreground">$30 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="[Anora T-Shirt 이미지 2]" alt="ANORA FUCKIN' CINDERELLA T-Shirt" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">ANORA FUCKIN' CINDERELLA T-Shirt</h3><p class="text-md text-muted-foreground">$30 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="[Anora T-Shirt 이미지 3]" alt="ANORA BRIGHTON BENDER T-Shirt" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">ANORA BRIGHTON BENDER T-Shirt</h3><p class="text-md text-muted-foreground">$30 USD</p></div>
+                    </div>
+                    <div>
+                        <img src="[Anora Thong 이미지]" alt="ANORA 'LITTLE WIFEY' Thong" class="w-full h-auto rounded-lg bg-gray-800"/>
+                        <div class="mt-4 text-center"><h3 class="text-lg font-semibold">ANORA 'LITTLE WIFEY' Thong</h3><p class="text-md text-muted-foreground">$15 USD</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Award Winners</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div><img src="[Anora 이미지 URL]" alt="Anora" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Anatomy of A Fall 이미지 URL]" alt="Anatomy of A Fall" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="https://www.datocms-assets.com/148598/1737467709-5ea85f401cdfa222b0b63e37_ki-jung-kim-so-dam-park-and-ki-woo-park-woo-sik-choi-in-parasite-courtesy-of-neon-cj-entertainment.jpg" alt="Parasite" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Triangle Of Sadness 이미지 URL]" alt="Triangle Of Sadness" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="https://www.datocms-assets.com/148598/1738602285-60e4dc6afa7012410009ea84_spencer-neon.jpg" alt="Spencer" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Titane 이미지 URL]" alt="Titane" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[I, Tonya 이미지 URL]" alt="I, Tonya" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Border 이미지 URL]" alt="Border" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Flee 이미지 URL]" alt="Flee" class="w-full h-auto rounded-lg"/></div>
+                    <div><img src="[Honeyland 이미지 URL]" alt="Honeyland" class="w-full h-auto rounded-lg"/></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="bg-transparent text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-lg font-bold">NEON</h3>
+                    <p class="text-sm text-muted-foreground">© 2025 NEON Rated, LLC. All Rights Reserved.</p>
+                </div>
+                 <div class="flex flex-wrap justify-center space-x-4 mb-4 md:mb-0">
+                    <a href="[FAQ Link]" class="text-white hover:text-gray-400 text-sm">FAQs</a>
+                    <a href="[Shipping & Returns Link]" class="text-white hover:text-gray-400 text-sm">Shipping & Returns</a>
+                    <a href="[Terms of Use Link]" class="text-white hover:text-gray-400 text-sm">Terms of Use</a>
+                    <a href="[Privacy Policy Link]" class="text-white hover:text-gray-400 text-sm">Privacy Policy</a>
+                    <a href="[Cookie Policy Link]" class="text-white hover:text-gray-400 text-sm">Cookie Policy</a>
+                    <a href="[Contact Link]" class="text-white hover:text-gray-400 text-sm">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/neonrated/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400">Instagram</a>
+                    <a href="https://www.tiktok.com/@neonrated" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400">TikTok</a>
+                    <a href="https://twitter.com/neonrated" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400">Twitter</a>
+                    <a href="https://www.facebook.com/neonrated" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400">Facebook</a>
+                    <a href="https://www.youtube.com/neonrated" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gray-400">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
