@@ -42,9 +42,9 @@ img { display: block; max-width: 100%; }
 /* 2. HERO SECTION           */
 /* ------------------------- */
 .hero-section { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-.video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-.background-video { width: 100%; height: 100%; object-fit: cover; }
-.video-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
+.media-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.background-media { width: 100%; height: 100%; object-fit: cover; }
+.media-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
 .hero-content { position: relative; z-index: 2; color: var(--color-text); padding: 20px; }
 .hero-content h1 { font-size: 8vw; font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 5px; }
 .hero-content p { font-size: 2vw; text-transform: uppercase; margin-top: 10px; }
@@ -85,44 +85,31 @@ img { display: block; max-width: 100%; }
 /* 7. RESPONSIVE DESIGN      */
 /* ------------------------- */
 @media (max-width: 768px) {
-    /* --- 헤더 --- */
-    .main-header {
-        padding: 20px;
-    }
-    .logo {
-        font-size: 20px;
-    }
-    .main-nav ul {
-        gap: 20px;
-    }
-    .main-nav a {
-        font-size: 14px;
-    }
+    .main-header { padding: 20px; }
+    .logo { font-size: 20px; }
+    .main-nav ul { gap: 20px; }
+    .main-nav a { font-size: 14px; }
+    .hero-content h1 { font-size: 12vw; }
+    .hero-content p { font-size: 3.5vw; }
+    .film-grid-section { padding: 80px 20px; }
+    .film-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .custom-cursor { display: none; }
+    body, a { cursor: auto; }
+}
 
-    /* --- 히어로 섹션 --- */
-    .hero-content h1 {
-        font-size: 12vw; /* 모바일에서 글씨를 더 키움 */
-    }
-    .hero-content p {
-        font-size: 3.5vw;
-    }
 
-    /* --- 영화 그리드 --- */
-    .film-grid-section {
-        padding: 80px 20px; /* 좌우, 상하 여백 줄임 */
-    }
-    .film-grid {
-        /* 모바일에서는 한 줄에 한 개의 포스터만 보이도록 minmax 값 조정 */
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px; /* 포스터 사이 간격 줄임 */
-    }
+/* ------------------------- */
+/* 8. DETAIL PAGE (No changes) */
+/* ------------------------- */
+.detail-section { padding: 120px 40px 60px; max-width: 900px; margin: 0 auto; }
+.detail-content .back-link { display: inline-block; margin-bottom: 40px; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
+.detail-content h1 { font-size: 6vw; font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 3px; text-align: center; margin-bottom: 40px; }
+.trailer-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 60px; }
+.trailer-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.synopsis h2 { font-weight: var(--font-weight-black); text-transform: uppercase; margin-bottom: 20px; font-size: 18px; letter-spacing: 1px; border-bottom: 1px solid var(--color-text); padding-bottom: 10px; }
+.synopsis p { font-size: 16px; line-height: 1.7; }
 
-    /* --- 커스텀 커서는 모바일에서 숨김 (터치 환경이므로) --- */
-    .custom-cursor {
-        display: none;
-    }
-    /* 기본 커서를 다시 보이게 함 */
-    body, a {
-        cursor: auto;
-    }
+@media (max-width: 768px) {
+    .detail-section { padding: 100px 20px 40px; }
+    .detail-content h1 { font-size: 10vw; }
 }
