@@ -30,81 +30,70 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ===== HEADER - EXACT NEON STYLE ===== */
+        /* ===== HEADER - ACTUAL NEON WEBSITE STYLE ===== */
         .header {
             position: fixed;
             top: 0;
             width: 100%;
             background: #ffffff;
             z-index: 1000;
-            transition: all 0.3s ease;
+            box-shadow: none;
+            border: none;
         }
 
         .nav {
-            max-width: none;
+            display: block;
             padding: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: stretch;
-            height: 60px;
+            margin: 0;
         }
 
-        .logo {
-            font-size: 16px;
-            font-weight: 900;
-            color: #000000;
-            text-decoration: none;
-            letter-spacing: 0;
-            text-transform: uppercase;
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
-            flex-shrink: 0;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
+        .nav-item {
+            display: block;
+            border-bottom: 1px solid #e5e5e5;
             margin: 0;
             padding: 0;
-            align-items: stretch;
-            flex: 1;
         }
 
-        .nav-menu li {
-            position: relative;
-            border-right: 1px solid rgba(0, 0, 0, 0.1);
+        .nav-item:first-child {
+            border-top: 1px solid #e5e5e5;
         }
 
-        .nav-link {
+        .nav-link,
+        .logo {
+            display: block;
             color: #000000;
             text-decoration: none;
             font-weight: 400;
             font-size: 14px;
-            text-transform: none;
-            letter-spacing: 0;
+            padding: 16px 20px;
+            margin: 0;
             transition: background-color 0.2s ease;
-            padding: 20px 30px;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            white-space: nowrap;
+            border: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.4;
         }
 
-        .nav-link:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+        .logo {
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        .nav-link:hover,
+        .logo:hover {
+            background-color: #f5f5f5;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
         .mobile-menu-btn {
             display: none;
-            background: none;
-            border: none;
-            color: #000000;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 20px;
-            border-left: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         /* ===== HERO SLIDER SECTION ===== */
@@ -112,7 +101,7 @@
             position: relative;
             height: 100vh;
             overflow: hidden;
-            margin-top: 60px;
+            margin-top: 0;
             background: #ffffff;
         }
 
@@ -654,25 +643,12 @@
         }
 
         @media (max-width: 768px) {
-            .nav {
-                padding: 0;
-            }
-            
             .main-content {
                 padding: 0 16px;
             }
 
             .footer-content {
                 padding: 0 16px;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-                margin-left: auto;
             }
             
             .slide-title {
@@ -691,30 +667,6 @@
             
             .grid-5 {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nav-menu.mobile-open {
-                display: flex !important;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: #ffffff;
-                flex-direction: column;
-                border-top: 1px solid rgba(0, 0, 0, 0.1);
-                z-index: 999;
-            }
-
-            .nav-menu.mobile-open li {
-                border-right: none;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                width: 100%;
-            }
-
-            .nav-menu.mobile-open .nav-link {
-                padding: 20px 30px;
-                width: 100%;
-                justify-content: flex-start;
             }
         }
 
@@ -765,18 +717,27 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - Actual NEON Style -->
     <header class="header">
         <nav class="nav">
-            <a href="#" class="logo">NEON</a>
-            <ul class="nav-menu">
-                <li><a href="#movies" class="nav-link">In Theaters</a></li>
-                <li><a href="#coming-soon" class="nav-link">Coming Soon</a></li>
-                <li><a href="#watch-now" class="nav-link">Watch Now</a></li>
-                <li><a href="#awards" class="nav-link">Award Winners</a></li>
-                <li><a href="#shop" class="nav-link">Shop</a></li>
-            </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-item">
+                <a href="#" class="logo">NEON</a>
+            </div>
+            <div class="nav-item">
+                <a href="#movies" class="nav-link">In Theaters</a>
+            </div>
+            <div class="nav-item">
+                <a href="#coming-soon" class="nav-link">Coming Soon</a>
+            </div>
+            <div class="nav-item">
+                <a href="#watch-now" class="nav-link">Watch Now</a>
+            </div>
+            <div class="nav-item">
+                <a href="#awards" class="nav-link">Award Winners</a>
+            </div>
+            <div class="nav-item">
+                <a href="#shop" class="nav-link">Shop</a>
+            </div>
         </nav>
     </header>
 
@@ -1403,31 +1364,8 @@
         }
 
         function handleMobileMenu() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (mobileMenuBtn && navMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navMenu.classList.toggle('mobile-open');
-                    this.textContent = navMenu.classList.contains('mobile-open') ? '✕' : '☰';
-                });
-                
-                // Close menu when clicking on a link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navMenu.classList.remove('mobile-open');
-                        mobileMenuBtn.textContent = '☰';
-                    });
-                });
-                
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                        navMenu.classList.remove('mobile-open');
-                        mobileMenuBtn.textContent = '☰';
-                    }
-                });
-            }
+            // NEON 사이트는 간단한 세로 목록 구조이므로 모바일 메뉴 토글이 불필요
+            return;
         }
 
         // ===== SMOOTH SCROLL =====
