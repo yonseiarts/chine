@@ -1,3 +1,5 @@
+/* ... 기존 섹션 0부터 8까지는 모두 동일 ... */
+
 /* ------------------------- */
 /* 0. DESIGN SYSTEM & SETUP  */
 /* ------------------------- */
@@ -99,7 +101,7 @@ img { display: block; max-width: 100%; }
 
 
 /* ------------------------- */
-/* 8. DETAIL PAGE (No changes) */
+/* 8. DETAIL PAGE            */
 /* ------------------------- */
 .detail-section { padding: 120px 40px 60px; max-width: 900px; margin: 0 auto; }
 .detail-content .back-link { display: inline-block; margin-bottom: 40px; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
@@ -112,4 +114,23 @@ img { display: block; max-width: 100%; }
 @media (max-width: 768px) {
     .detail-section { padding: 100px 20px 40px; }
     .detail-content h1 { font-size: 10vw; }
+}
+
+/* ------------------------- */
+/* 9. PAGE TRANSITIONS       */
+/* ------------------------- */
+html.is-changing .transition-fade {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+html.is-animating .transition-fade {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.transition-fade {
+    transition: opacity 0.4s, transform 0.4s;
+    opacity: 1;
+    transform: translateY(0);
 }
