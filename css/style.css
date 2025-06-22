@@ -1,136 +1,76 @@
-/* ... 기존 섹션 0부터 8까지는 모두 동일 ... */
+/* ... 섹션 1까지는 동일 ... */
 
 /* ------------------------- */
-/* 0. DESIGN SYSTEM & SETUP  */
+/* 2. HERO SECTION (Swiper)  */
 /* ------------------------- */
-:root {
-    --color-background: #000;
-    --color-text: #fff;
-    --font-primary: 'Inter', sans-serif;
-    --font-weight-medium: 500;
-    --font-weight-black: 900;
-}
-
-body {
-    background-color: var(--color-background);
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
     color: var(--color-text);
-    font-family: var(--font-primary);
-    font-weight: var(--font-weight-medium);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    cursor: none;
 }
 
-a { 
-    color: inherit; 
-    text-decoration: none; 
-    cursor: none;
+.hero-swiper {
+    width: 100%;
+    height: 100%;
 }
 
-img { display: block; max-width: 100%; }
-
-
-/* ------------------------- */
-/* 1. HEADER & FOOTER        */
-/* ------------------------- */
-.main-header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 30px 40px; z-index: 100; box-sizing: border-box; }
-.logo { font-weight: var(--font-weight-black); font-size: 24px; letter-spacing: 2px; }
-.main-nav ul { display: flex; gap: 30px; }
-.main-nav a { font-size: 16px; text-transform: uppercase; }
-.main-footer { text-align: center; padding: 40px; font-size: 14px; opacity: 0.5; }
-
-
-/* ------------------------- */
-/* 2. HERO SECTION           */
-/* ------------------------- */
-.hero-section { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-.media-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-.background-media { width: 100%; height: 100%; object-fit: cover; }
-.media-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
-.hero-content { position: relative; z-index: 2; color: var(--color-text); padding: 20px; }
-.hero-content h1 { font-size: 8vw; font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 5px; }
-.hero-content p { font-size: 2vw; text-transform: uppercase; margin-top: 10px; }
-
-
-/* ------------------------- */
-/* 3. FILM GRID              */
-/* ------------------------- */
-.film-grid-section { padding: 100px 40px; }
-.film-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-.film-item { position: relative; overflow: hidden; }
-.film-image img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) grayscale(1); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.film-item .title { position: absolute; bottom: 20px; left: 20px; font-size: 20px; font-weight: var(--font-weight-black); text-transform: uppercase; opacity: 0; transform: translateY(10px); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-
-
-/* ------------------------- */
-/* 4. HOVER INTERACTION      */
-/* ------------------------- */
-.film-item:hover .film-image img { transform: scale(1.05); filter: none; }
-.film-item:hover .title { opacity: 1; transform: translateY(0); }
-
-
-/* ------------------------- */
-/* 5. SCROLL ANIMATION       */
-/* ------------------------- */
-.animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-
-
-/* ------------------------- */
-/* 6. CUSTOM CURSOR          */
-/* ------------------------- */
-.custom-cursor { position: fixed; width: 12px; height: 12px; background-color: var(--color-text); border-radius: 50%; pointer-events: none; transition: transform 0.2s ease-out, width 0.2s ease-out, height 0.2s ease-out; z-index: 9999; transform: translate(-50%, -50%); }
-.custom-cursor.grow { width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.5); }
-
-
-/* ------------------------- */
-/* 7. RESPONSIVE DESIGN      */
-/* ------------------------- */
-@media (max-width: 768px) {
-    .main-header { padding: 20px; }
-    .logo { font-size: 20px; }
-    .main-nav ul { gap: 20px; }
-    .main-nav a { font-size: 14px; }
-    .hero-content h1 { font-size: 12vw; }
-    .hero-content p { font-size: 3.5vw; }
-    .film-grid-section { padding: 80px 20px; }
-    .film-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .custom-cursor { display: none; }
-    body, a { cursor: auto; }
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-
-/* ------------------------- */
-/* 8. DETAIL PAGE            */
-/* ------------------------- */
-.detail-section { padding: 120px 40px 60px; max-width: 900px; margin: 0 auto; }
-.detail-content .back-link { display: inline-block; margin-bottom: 40px; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; }
-.detail-content h1 { font-size: 6vw; font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 3px; text-align: center; margin-bottom: 40px; }
-.trailer-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 60px; }
-.trailer-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.synopsis h2 { font-weight: var(--font-weight-black); text-transform: uppercase; margin-bottom: 20px; font-size: 18px; letter-spacing: 1px; border-bottom: 1px solid var(--color-text); padding-bottom: 10px; }
-.synopsis p { font-size: 16px; line-height: 1.7; }
-
-@media (max-width: 768px) {
-    .detail-section { padding: 100px 20px 40px; }
-    .detail-content h1 { font-size: 10vw; }
+.swiper-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-/* ------------------------- */
-/* 9. PAGE TRANSITIONS       */
-/* ------------------------- */
-html.is-changing .transition-fade {
-    opacity: 0;
-    transform: translateY(10px);
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
 }
 
-html.is-animating .transition-fade {
+.hero-content h1 {
+    font-size: 8vw;
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.hero-content p {
+    font-size: 2vw;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+/* Swiper 네비게이션 & 페이지네이션 스타일 */
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover {
     opacity: 1;
-    transform: translateY(0);
+}
+.swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    width: 10px;
+    height: 10px;
+}
+.swiper-pagination-bullet-active {
+    background: #fff;
 }
 
-.transition-fade {
-    transition: opacity 0.4s, transform 0.4s;
-    opacity: 1;
-    transform: translateY(0);
-}
+/* ... 나머지 섹션들은 동일 ... */
