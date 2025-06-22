@@ -1,0 +1,117 @@
+/* ------------------------- */
+/* 0. DESIGN SYSTEM & SETUP  */
+/* ------------------------- */
+:root {
+    --color-background: #000;
+    --color-text: #fff;
+    --font-primary: 'Inter', sans-serif;
+    --font-weight-medium: 500;
+    --font-weight-black: 900;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ------------------------- */
+/* 1. HEADER & FOOTER        */
+/* ------------------------- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-weight: var(--font-weight-black);
+    font-size: 24px;
+    letter-spacing: 2px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+
+/* ------------------------- */
+/* 2. FILM GRID              */
+/* ------------------------- */
+main {
+    /* 헤더 높이만큼 패딩을 주어 콘텐츠가 겹치지 않게 함 */
+    padding-top: 100px;
+}
+
+.film-grid-section {
+    padding: 0 40px;
+}
+
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.film-item {
+    position: relative; /* 자식 요소인 title을 위한 기준점 */
+    overflow: hidden; /* 확대 효과 시 이미지가 넘치지 않게 함 */
+}
+
+.film-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 기본 상태: 약간 어둡고 흑백으로 처리 */
+    filter: brightness(0.7) grayscale(1);
+    /* 부드러운 전환 효과 준비 */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.film-item .title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 20px;
+    font-weight: var(--font-weight-black);
+    text-transform: uppercase;
+    /* 기본 상태: 숨김 */
+    opacity: 0;
+    transform: translateY(10px);
+    /* 부드러운 전환 효과 준비 */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
