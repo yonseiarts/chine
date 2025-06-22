@@ -1,56 +1,928 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEON Clone</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>NEON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <script src="https://unpkg.com/swup@4" defer></script>
-    <script src="https://unpkg.com/@swup/body-class-plugin@3" defer></script>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #000 0%, #111 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.1) 0%, transparent 50%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Featured Movie */
+        .featured {
+            background: #111;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .featured-poster {
+            aspect-ratio: 2/3;
+            background: linear-gradient(135deg, #333, #111);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .featured-status {
+            display: inline-block;
+            background: #ff0000;
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-year {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .featured-description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .featured-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Grid Layouts */
+        .movie-grid,
+        .shop-grid,
+        .portfolio-grid,
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .movie-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .shop-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .portfolio-grid {
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        }
+
+        .services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: #111;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card-image {
+            aspect-ratio: 2/3;
+            background: linear-gradient(135deg, #333, #111);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Product Cards */
+        .product-card {
+            background: #111;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #333, #111);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-collection {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-btn {
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Portfolio Cards */
+        .portfolio-card {
+            aspect-ratio: 16/10;
+            background: #111;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #ff0000, #0066ff);
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-bg {
+            opacity: 0.2;
+        }
+
+        .portfolio-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        }
+
+        .portfolio-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: #111;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000, #0066ff);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        .contact {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: #111;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            background: #000;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            background: #111;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie-grid,
+            .shop-grid,
+            .portfolio-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
-
-    <header class="main-header">
-        <a href="index.html" class="logo">NEON</a>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">FILMS</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SHOP</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">NEON</a>
+                <ul class="nav-menu">
+                    <li><a href="#movies" class="nav-link">In Theaters</a></li>
+                    <li><a href="#shop" class="nav-link">Shop</a></li>
+                    <li><a href="#portfolio" class="nav-link">Awards</a></li>
+                    <li><a href="#services" class="nav-link">Coming Soon</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main id="swup" class="transition-fade">
-        <div class="page-content">
-            <section class="hero-section">
-                <div class="swiper hero-swiper">
-                    <div class="swiper-wrapper">
-                        </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </section>
-
-            <section class="film-grid-section">
-                <div class="film-grid">
-                    </div>
-            </section>
-            
-            <footer class="main-footer animate-on-scroll">
-                <p>© 2025 NEON CLONE</p>
-            </footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">NEON</h1>
+            <p class="hero-subtitle">Independent films that move culture forward</p>
+            <div class="hero-cta">
+                <a href="#movies" class="btn btn-primary">Watch Now</a>
+                <a href="#shop" class="btn btn-secondary">Shop Collection</a>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/app.js"></script> 
-</body>
-</html>
+    <!-- Featured Movie -->
+    <section class="section" id="movies">
+        <div class="container">
+            <div class="featured">
+                <div class="featured-content">
+                    <div class="featured-poster">🎬</div>
+                    <div class="featured-info">
+                        <span class="featured-status">In Theaters Jun 6, 2025</span>
+                        <h3 class="featured-title">The Life of Chuck</h3>
+                        <div class="featured-year">2025</div>
+                        <p class="featured-description">
+                            A deeply moving story that explores the extraordinary moments within an ordinary life, 
+                            celebrating the connections we make and the impact we have on each other.
+                        </p>
+                        <div class="featured-actions">
+                            <button class="btn btn-primary">Play Trailer</button>
+                            <button class="btn btn-secondary">Add to Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Now Playing</h2>
+                <p class="section-subtitle">Experience cinema that challenges and inspires</p>
+            </div>
+
+            <div class="movie-grid">
+                <div class="card">
+                    <div class="card-image">🎭</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Anora</h3>
+                        <div class="card-meta">2025</div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Play Trailer</button>
+                            <button class="btn btn-secondary">Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">🎪</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Parasite</h3>
+                        <div class="card-meta">Award Winner</div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Watch Now</button>
+                            <button class="btn btn-secondary">Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">🎨</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Longlegs</h3>
+                        <div class="card-meta">2025</div>
+                        <div class="card-actions">
+                            <button class="btn btn-primary">Play Trailer</button>
+                            <button class="btn btn-secondary">Wishlist</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section" id="shop">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Official Merchandise</h2>
+                <p class="section-subtitle">Exclusive items from our acclaimed films</p>
+            </div>
+
+            <div class="shop-grid">
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <div class="product-info">
+                        <h3 class="product-name">PARASITE T-Shirt</h3>
+                        <div class="product-price">$40 USD</div>
+                        <div class="product-collection">Parasite Collection</div>
+                        <button class="product-btn">Pre-Order Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🎒</div>
+                    <div class="product-info">
+                        <h3 class="product-name">Scholar's Rock Tote</h3>
+                        <div class="product-price">$30 USD</div>
+                        <div class="product-collection">Parasite Collection</div>
+                        <button class="product-btn">Pre-Order Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🧸</div>
+                    <div class="product-info">
+                        <h3 class="product-name">Official Monkey Figurine</h3>
+                        <div class="product-price">$125 USD</div>
+                        <div class="product-collection">The Monkey Collection</div>
+                        <button class="product-btn">Pre-Order Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">📚</div>
+                    <div class="product-info">
+                        <h3 class="product-name">LONGLEGS Print</h3>
+                        <div class="product-price">$20 USD</div>
+                        <div class="product-collection">Longlegs Collection</div>
+                        <button class="product-btn">Pre-Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Awards Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Award Winners</h2>
+                <p class="section-subtitle">Films that have shaped cinema</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-bg"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Parasite</h3>
+                        <p class="portfolio-category">Academy Award Winner</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-bg"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Triangle of Sadness</h3>
+                        <p class="portfolio-category">Palme d'Or Winner</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-bg"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Spencer</h3>
+                        <p class="portfolio-category">Critics Choice</p>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <div class="portfolio-bg"></div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">I, Tonya</h3>
+                        <p class="portfolio-category">Oscar Nominated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services/Coming Soon Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Coming Soon</h2>
+                <p class="section-subtitle">Upcoming releases to watch for</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎬</div>
+                    <h3 class="service-title">Together</h3>
+                    <p class="service-description">In Theaters Jul 30, 2025</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h3 class="service-title">Hell of a Summer</h3>
+                    <p class="service-description">Now Available</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎪</div>
+                    <h3 class="service-title">The Monkey</h3>
+                    <p class="service-description">Now Available</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Presence</h3>
+                    <p class="service-description">Now Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-subtitle">Get in touch with our team</p>
+            </div>
+
+            <div class="contact">
+                <form class="contact-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Subject</label>
+                        <select class="form-select">
+                            <option>General Inquiry</option>
+                            <option>Press</option>
+                            <option>Distribution</option>
+                            <option>Merchandise</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Movies</h3>
+                    <a href="#" class="footer-link">In Theaters</a>
+                    <a href="#" class="footer-link">Coming Soon</a>
+                    <a href="#" class="footer-link">Award Winners</a>
+                    <a href="#" class="footer-link">Watch Now</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <a href="#" class="footer-link">Apparel</a>
+                    <a href="#" class="footer-link">Accessories</a>
+                    <a href="#" class="footer-link">Collectibles</a>
+                    <a href="#" class="footer-link">Gift Cards</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">News</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Accessibility</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>NEON Rated, LLC © 2017 — 2025. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
