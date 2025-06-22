@@ -1,41 +1,28 @@
-// === 사용자 설정 영역 ===
-
-// 1. 히어로 섹션 콘텐츠
-const heroContent = {
-  type: 'video',
-  src: 'videos/hero-video.mp4',
-  title: 'NEON',
-  subtitle: 'FILM COLLECTION'
-};
-
-// 2. 영화 그리드 콘텐츠 (상세 페이지를 위한 정보 추가)
-const filmData = [
+const heroSlides = [
   {
-    id: 'anora',
-    poster: 'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg',
+    type: 'image',
+    src: 'https://www.themoviedb.org/t/p/original/hDm5G0v1n3R3g2s9I2L00iAIQ4j.jpg', // Anora 배경 이미지
     title: 'ANORA',
-    trailerId: 'sS_8B-H2s6w',
-    synopsis: 'A young Brooklyn exotic dancer\'s fairytale marriage to the son of a Russian oligarch is shattered when his parents arrive in New York to force an annulment, sending her on a perilous journey to secure her future.'
+    subtitle: 'NOW AVAILABLE',
+    year: '2024',
+    buttonText: 'WATCH NOW'
   },
   {
-    id: 'parasite',
-    poster: 'https://image.tmdb.org/t/p/w500/sEaC3U1aMybB0n0fL5eia2Sman2.jpg',
-    title: 'PARASITE',
-    trailerId: '5xH0HfJHsaY',
-    synopsis: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.'
+    type: 'image',
+    src: 'https://www.themoviedb.org/t/p/original/kPSaI2HslT39n0XzG8LMeXzJ6jT.jpg', // Together 배경 이미지
+    title: 'TOGETHER',
+    subtitle: 'IN THEATERS JUL 26, 2025',
+    year: '',
+    buttonText: ''
   },
   {
-    id: 'portrait',
-    poster: 'https://image.tmdb.org/t/p/w500/vqzNJd9oGfl9eS2N2K1hTOY_o3z.jpg',
-    title: 'PORTRAIT OF A LADY ON FIRE',
-    trailerId: 'R-_b3aT_hEg',
-    synopsis: 'On an isolated island in Brittany at the end of the eighteenth century, a female painter is obliged to paint a wedding portrait of a young woman.'
-  },
-  {
-    id: 'triangle',
-    poster: 'https://image.tmdb.org/t/p/w500/b34S25N6yT1pB0nS6wTJwT9MniG.jpg',
-    title: 'TRIANGLE OF SADNESS',
-    trailerId: 'VDvfAU_FACo',
-    synopsis: 'A cruise for the super-rich sinks, leaving survivors, including a celebrity model couple, trapped on an island.'
-  },
+    type: 'image',
+    src: 'https://www.themoviedb.org/t/p/original/s9YGy6nN5m5i2AQ3bV6mRGUi2m6.jpg', // The Life of Chuck 배경 이미지
+    title: 'THE LIFE OF CHUCK',
+    subtitle: 'IN THEATERS',
+    year: '',
+    buttonText: ''
+  }
 ];
+
+const filmData = [ /* ... filmData는 이전과 동일 ... */ ];
