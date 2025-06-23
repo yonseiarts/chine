@@ -128,12 +128,12 @@
 
         .slide:nth-child(1) {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=1') center/cover;
         }
 
         .slide:nth-child(2) {
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/fish bowl2.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=2') center/cover;
         }
 
         .slide-content {
@@ -334,8 +334,8 @@
         .product-image { height: 240px; }
         .award-image { aspect-ratio: 2/3; }
 
-        .movie-image.diaspora { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg'); }
-        .movie-image.fishbowl { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl2.jpg'); }
+        .movie-image.diaspora { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/디아스포라.jpg'); }
+        .movie-image.fishbowl { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/어항.jpg'); }
         .movie-image.spring-dreams { background-image: url('https://picsum.photos/400/600?random=7'); }
         .movie-image.urban-tales { background-image: url('https://picsum.photos/400/600?random=8'); }
         .movie-image.memories { background-image: url('https://picsum.photos/400/600?random=9'); }
@@ -700,6 +700,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* iframe 스타일 */
+        iframe.video-element {
+            border: none;
         }
 
         /* 장바구니 모달 */
@@ -1410,51 +1415,56 @@
             }
         };
 
-        // 영화 데이터 (트레일러 URL 추가)
+        // 영화 데이터 (실제 YouTube URL 예시)
         const movies = {
             'diaspora': {
                 title: 'The Diaspora',
                 subtitle: '2024 • Drama • 120 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=zrk1Dc8XSNs' // 샘플 비디오
-                trailerEmbed: 'https://www.youtube.com/embed/https:/embed/youtu.be/zrk1Dc8XSNs'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora.jpg',
+                trailer: 'https://www.youtube.com/watch?v=ABC123XYZ', // ← 실제 YouTube URL로 교체하세요
+                trailerEmbed: 'https://www.youtube.com/embed/ABC123XYZ?autoplay=1&rel=0&modestbranding=1'
             },
             'fishbowl': {
                 title: '어항',
                 subtitle: '2024 • Drama • 95 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=gRtc6tfjykU' // 샘플 비디오
-                trailerEmbed: 'https://www.youtube.com/embed/https:/embed/youtu.be/gRtc6tfjykU'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl.jpg',
+                trailer: 'https://www.youtube.com/watch?v=DEF456UVW', // ← 실제 YouTube URL로 교체하세요
+                trailerEmbed: 'https://www.youtube.com/embed/DEF456UVW?autoplay=1&rel=0&modestbranding=1'
             },
             'spring-dreams': {
                 title: 'Spring Dreams',
                 subtitle: '2024 • Romance • 110 min',
                 hero: 'https://picsum.photos/1920/1080?random=7',
-                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
+                trailer: 'https://www.youtube.com/watch?v=GHI789RST',
+                trailerEmbed: 'https://www.youtube.com/embed/GHI789RST?autoplay=1&rel=0&modestbranding=1'
             },
             'urban-tales': {
                 title: 'Urban Tales',
                 subtitle: '2024 • Action • 130 min',
                 hero: 'https://picsum.photos/1920/1080?random=8',
-                trailer: 'https://www.w3schools.com/html/movie.mp4'
+                trailer: 'https://www.youtube.com/watch?v=JKL012MNO',
+                trailerEmbed: 'https://www.youtube.com/embed/JKL012MNO?autoplay=1&rel=0&modestbranding=1'
             },
             'memories': {
                 title: 'Memories',
                 subtitle: '2023 • Drama • 105 min',
                 hero: 'https://picsum.photos/1920/1080?random=9',
-                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
+                trailer: 'https://www.youtube.com/watch?v=PQR345STU',
+                trailerEmbed: 'https://www.youtube.com/embed/PQR345STU?autoplay=1&rel=0&modestbranding=1'
             },
             'silence': {
                 title: 'Silence',
                 subtitle: '2023 • Thriller • 98 min',
                 hero: 'https://picsum.photos/1920/1080?random=10',
-                trailer: 'https://www.w3schools.com/html/movie.mp4'
+                trailer: 'https://www.youtube.com/watch?v=VWX678YZA',
+                trailerEmbed: 'https://www.youtube.com/embed/VWX678YZA?autoplay=1&rel=0&modestbranding=1'
             },
             'journey': {
                 title: 'Journey',
                 subtitle: '2023 • Adventure • 140 min',
                 hero: 'https://picsum.photos/1920/1080?random=11',
-                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
+                trailer: 'https://www.youtube.com/watch?v=BCD901EFG',
+                trailerEmbed: 'https://www.youtube.com/embed/BCD901EFG?autoplay=1&rel=0&modestbranding=1'
             }
         };
 
@@ -1534,32 +1544,48 @@
             showPage('trailer-page');
         }
 
-        // 트레일러 재생 함수
+        // 트레일러 재생 함수 (YouTube 지원)
         function playTrailer() {
             if (!currentTrailerMovie) return;
             
             const movie = movies[currentTrailerMovie];
             const videoPlayer = document.getElementById('video-player');
             
-            // 비디오 엘리먼트 생성
-            videoPlayer.innerHTML = `
-                <video class="video-element" controls autoplay>
-                    <source src="${movie.trailer}" type="video/mp4">
-                    <p>브라우저가 비디오 재생을 지원하지 않습니다.</p>
-                </video>
-            `;
-            
-            // 비디오 로드 에러 처리
-            const video = videoPlayer.querySelector('video');
-            video.onerror = function() {
+            // YouTube 임베드가 있으면 YouTube 사용, 없으면 직접 비디오
+            if (movie.trailerEmbed) {
+                // YouTube 임베드
                 videoPlayer.innerHTML = `
-                    <div class="video-placeholder">
-                        <div style="font-size: 24px; margin-bottom: 16px;">⚠️</div>
-                        <div style="font-size: 18px; margin-bottom: 8px;">트레일러 로딩 실패</div>
-                        <small style="font-size: 14px; opacity: 0.7;">비디오를 불러올 수 없습니다</small>
-                    </div>
+                    <iframe 
+                        class="video-element" 
+                        src="${movie.trailerEmbed}?autoplay=1&rel=0&modestbranding=1"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 `;
-            };
+            } else {
+                // 직접 비디오 파일
+                videoPlayer.innerHTML = `
+                    <video class="video-element" controls autoplay>
+                        <source src="${movie.trailer}" type="video/mp4">
+                        <p>브라우저가 비디오 재생을 지원하지 않습니다.</p>
+                    </video>
+                `;
+                
+                // 비디오 로드 에러 처리
+                const video = videoPlayer.querySelector('video');
+                if (video) {
+                    video.onerror = function() {
+                        videoPlayer.innerHTML = `
+                            <div class="video-placeholder">
+                                <div style="font-size: 24px; margin-bottom: 16px;">⚠️</div>
+                                <div style="font-size: 18px; margin-bottom: 8px;">트레일러 로딩 실패</div>
+                                <small style="font-size: 14px; opacity: 0.7;">비디오를 불러올 수 없습니다</small>
+                            </div>
+                        `;
+                    };
+                }
+            }
         }
 
         // 수량 변경
