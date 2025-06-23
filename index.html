@@ -105,6 +105,7 @@
         .hero-slider {
             position: relative;
             height: 100vh;
+            min-height: 500px; /* 최소 높이 설정 */
             margin-top: 50px;
             overflow: hidden;
         }
@@ -127,12 +128,12 @@
 
         .slide:nth-child(1) {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=1') center/cover;
         }
 
         .slide:nth-child(2) {
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=2') center/cover;
         }
 
         .slide-content {
@@ -310,10 +311,12 @@
         .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
         .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
 
+        /* 카드 호버 효과 터치 디바이스에서 제거 */
         .card {
             background: transparent;
             transition: transform 0.3s ease;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent; /* 터치 시 하이라이트 제거 */
         }
 
         .card:hover { transform: translateY(-8px); }
@@ -577,13 +580,74 @@
             color: #000000;
         }
 
-        /* 트레일러 비디오 */
-        .trailer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 60px;
+        /* 회사 소개 섹션 스타일 */
+        .about-section {
+            background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+            padding: 120px 0;
+            margin-bottom: 0;
         }
 
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .about-subtitle {
+            font-size: 20px;
+            color: #666666;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .about-description {
+            font-size: 16px;
+            color: #333333;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 48px;
+            text-align: left;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 64px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 40px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* 트레일러 비디오 스타일 개선 */
         .video-player {
             width: 100%;
             height: 70vh;
@@ -591,17 +655,51 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
+            cursor: pointer;
         }
 
         .video-placeholder {
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             font-size: 24px;
             background: linear-gradient(45deg, #333333, #555555);
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            background: linear-gradient(45deg, #444444, #666666);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000000;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button:hover {
+            background: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* 장바구니 모달 */
@@ -738,34 +836,151 @@
 
         .footer-text { color: #666666; font-size: 14px; }
 
+        /* 모바일 전용 스타일 개선 */
         @media (max-width: 900px) {
             .slide-content {
-                padding: 0 40px;
+                padding: 0 20px;
             }
             
-            .slide-title { font-size: 48px; }
-            .grid-2, .grid-4 { grid-template-columns: repeat(2, 1fr); }
-            .grid-5 { grid-template-columns: repeat(3, 1fr); }
+            .slide-title { font-size: 42px; }
+            .grid-2, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
+            .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .product-detail { grid-template-columns: 1fr; gap: 40px; }
-            .detail-content { padding: 0 40px; }
+            .detail-content { padding: 0 20px; }
             .trailer-container { padding: 40px 20px; }
+            .about-content { padding: 0 20px; }
+            .about-stats { grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+            .about-title { font-size: 36px; }
+            .about-subtitle { font-size: 18px; margin-bottom: 32px; }
+            
+            /* 슬라이더 컨트롤 모바일 최적화 */
+            .slider-controls {
+                bottom: 20px;
+                right: 20px;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 16px;
+            }
+            
+            .slider-timeline { width: 120px; }
+            .slider-counter { font-size: 14px; }
+            
+            /* 카드 간격 조정 */
+            .main-content { padding: 0 16px; }
+            .content-section { margin-bottom: 60px; padding-top: 60px; }
+            .section-header { margin-bottom: 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
         }
 
         @media (max-width: 768px) {
-            .grid-2, .grid-4, .grid-auto { grid-template-columns: 1fr; }
-            .grid-5 { grid-template-columns: repeat(2, 1fr); }
-            .slide-title { font-size: 36px; }
-            .section-title { font-size: 28px; }
-            .detail-title { font-size: 36px; }
             .nav-menu { display: none; }
+            
+            /* 히어로 섹션 모바일 최적화 */
+            .slide-title { font-size: 32px; line-height: 1.1; }
+            .slide-year { font-size: 16px; margin-bottom: 32px; }
+            .slide-buttons { flex-direction: column; gap: 12px; }
+            .slide-buttons .btn { text-align: center; }
+            
+            /* 섹션 제목 크기 조정 */
+            .section-title { font-size: 24px; margin-bottom: 8px; }
+            .section-subtitle { font-size: 14px; }
+            
+            /* 그리드 레이아웃 모바일 최적화 */
+            .grid-2, .grid-4, .grid-auto { grid-template-columns: 1fr; gap: 20px; }
+            .grid-5 { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* 카드 스타일 모바일 최적화 */
+            .card { margin-bottom: 8px; }
+            .movie-title, .award-title { font-size: 20px; }
+            .product-name { font-size: 15px; }
+            .movie-year { font-size: 14px; margin-bottom: 12px; }
+            
+            /* 회사 소개 섹션 모바일 */
+            .about-section { padding: 80px 0; }
+            .about-title { font-size: 28px; margin-bottom: 16px; }
+            .about-subtitle { font-size: 16px; margin-bottom: 32px; }
+            .about-description { font-size: 15px; line-height: 1.6; text-align: center; }
+            .about-stats { margin-top: 40px; gap: 24px; }
+            .stat-number { font-size: 32px; }
+            
+            /* 상세페이지 모바일 */
+            .detail-title { font-size: 28px; line-height: 1.1; }
+            .detail-subtitle { font-size: 16px; margin-bottom: 32px; }
+            .detail-buttons { flex-direction: column; gap: 12px; }
+            
+            /* 장바구니 모달 모바일 */
+            .cart-content { width: 95%; margin: 20px; }
+            .cart-header { padding: 20px; }
+            .cart-items { padding: 20px; }
+            .cart-total { padding: 20px; }
         }
 
         @media (max-width: 480px) {
+            /* 헤더 모바일 최적화 */
+            .nav { padding: 0 16px; height: 60px; }
+            .logo { font-size: 12px; }
+            .cart-btn { padding: 6px 12px; font-size: 10px; }
+            
+            /* 히어로 섹션 작은 화면 */
+            .hero-slider { margin-top: 60px; }
             .slide-title { font-size: 28px; }
-            .section-title { font-size: 24px; }
-            .grid-5 { grid-template-columns: 1fr; }
-            .detail-title { font-size: 28px; }
-            .product-detail { padding: 40px 20px; }
+            .slide-year { font-size: 14px; }
+            .btn { padding: 12px 20px; font-size: 11px; }
+            
+            /* 슬라이더 컨트롤 */
+            .slider-controls { bottom: 16px; right: 16px; }
+            .slider-timeline { width: 100px; }
+            .nav-btn { width: 36px; height: 36px; font-size: 16px; }
+            
+            /* 메인 콘텐츠 */
+            .main-content { padding: 0 12px; }
+            .content-section { margin-bottom: 50px; padding-top: 50px; }
+            .section-title { font-size: 22px; }
+            .section-header { margin-bottom: 24px; }
+            
+            /* 카드 레이아웃 */
+            .card-image { margin-bottom: 12px; }
+            .movie-title, .award-title { font-size: 18px; margin-bottom: 4px; }
+            .product-name { font-size: 14px; }
+            .product-price { font-size: 16px; }
+            .movie-buttons { gap: 8px; }
+            .main-content .btn { padding: 8px 16px; font-size: 10px; }
+            
+            /* 회사 소개 */
+            .about-section { padding: 60px 0; }
+            .about-content { padding: 0 16px; }
+            .about-title { font-size: 24px; }
+            .about-subtitle { font-size: 15px; }
+            .about-description { font-size: 14px; }
+            .stat-number { font-size: 28px; }
+            .stat-label { font-size: 12px; }
+            
+            /* 상세페이지 */
+            .product-detail { padding: 40px 16px; gap: 32px; }
+            .product-info h1 { font-size: 32px; }
+            .product-price-large { font-size: 24px; }
+            .product-description { font-size: 14px; }
+            
+            /* 트레일러 페이지 */
+            .trailer-container { padding: 32px 16px; }
+            .video-player { height: 50vh; }
+            .play-button { width: 60px; height: 60px; font-size: 20px; }
+            
+            /* 장바구니 */
+            .cart-item { flex-direction: column; text-align: center; }
+            .cart-item-image { width: 60px; height: 60px; margin: 0 auto 12px; }
+        }
+
+        /* 터치 디바이스 최적화 */
+        @media (hover: none) and (pointer: coarse) {
+            .card:hover { transform: none; }
+            .btn:hover { background: inherit; color: inherit; }
+            .nav-link:hover { opacity: 1; }
+            
+            /* 터치 타겟 크기 최적화 */
+            .btn { min-height: 44px; }
+            .nav-btn { min-width: 44px; min-height: 44px; }
+            .cart-btn { min-height: 40px; }
+            .quantity-btn { min-width: 44px; min-height: 44px; }
         }
     </style>
 </head>
@@ -775,6 +990,7 @@
             <div class="nav-left">
                 <a class="logo" onclick="showPage('home')">CHINE FILM</a>
                 <ul class="nav-menu">
+                    <li><a class="nav-link" onclick="showSection('about')">About</a></li>
                     <li><a class="nav-link" onclick="showSection('movies')">Films</a></li>
                     <li><a class="nav-link" onclick="showSection('coming-soon')">Coming Soon</a></li>
                     <li><a class="nav-link" onclick="showSection('watch-now')">Watch Now</a></li>
@@ -839,6 +1055,36 @@
         </section>
 
         <main class="main-content">
+            <!-- 회사 소개 섹션 -->
+            <section class="about-section" id="about">
+                <div class="about-content">
+                    <h2 class="about-title">CHINE FILM</h2>
+                    <p class="about-subtitle">
+                        창의적인 스토리텔링으로 세상을 변화시키는 독립 영화 제작사
+                    </p>
+                    <div class="about-description">
+                        <p>CHINE FILM은 2020년에 설립된 독립 영화 제작사로, 혁신적이고 의미 있는 콘텐츠를 통해 관객들에게 새로운 시각과 감동을 전달하고 있습니다. 우리는 다양한 장르와 스타일을 아우르며, 신진 감독들과 함께 창작의 경계를 넓혀가고 있습니다.</p>
+                        
+                        <p>각 작품은 단순한 엔터테인먼트를 넘어서 사회적 메시지와 인간의 본질에 대한 깊이 있는 탐구를 담고 있습니다. 디아스포라, 어항과 같은 대표작들을 통해 현대 사회의 복잡한 이슈들을 섬세하게 다루며, 국내외 영화제에서 주목받는 작품들을 지속적으로 선보이고 있습니다.</p>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">제작 작품 수</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">국제 영화제 수상</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">전 세계 관객</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="content-section" id="shop">
                 <div class="section-header">
                     <div>
@@ -1078,10 +1324,11 @@
         </div>
         
         <div class="trailer-container">
-            <div class="video-player">
+            <div class="video-player" id="video-player" onclick="playTrailer()">
                 <div class="video-placeholder" id="video-placeholder">
-                    🎬 Trailer Video Player<br>
-                    <small style="font-size: 16px; opacity: 0.7;">Click to play trailer</small>
+                    <button class="play-button">▶</button>
+                    <div style="font-size: 24px; margin-bottom: 8px;" id="trailer-movie-title">영화 트레일러</div>
+                    <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
                 </div>
             </div>
         </div>
@@ -1109,6 +1356,7 @@
         let currentSlide = 0;
         let cart = [];
         let currentProduct = null;
+        let currentTrailerMovie = null;
 
         // 제품 데이터
         const products = {
@@ -1162,42 +1410,49 @@
             }
         };
 
-        // 영화 데이터
+        // 영화 데이터 (트레일러 URL 추가)
         const movies = {
             'diaspora': {
                 title: 'The Diaspora',
                 subtitle: '2024 • Drama • 120 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/디아스포라.jpg'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg',
+                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4' // 샘플 비디오
             },
             'fishbowl': {
                 title: '어항',
                 subtitle: '2024 • Drama • 95 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/어항.jpg'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl2.jpg',
+                trailer: 'https://youtu.be/gRtc6tfjykU' // 샘플 비디오
             },
             'spring-dreams': {
                 title: 'Spring Dreams',
                 subtitle: '2024 • Romance • 110 min',
-                hero: 'https://picsum.photos/1920/1080?random=7'
+                hero: 'https://picsum.photos/1920/1080?random=7',
+                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
             },
             'urban-tales': {
                 title: 'Urban Tales',
                 subtitle: '2024 • Action • 130 min',
-                hero: 'https://picsum.photos/1920/1080?random=8'
+                hero: 'https://picsum.photos/1920/1080?random=8',
+                trailer: 'https://www.w3schools.com/html/movie.mp4'
             },
             'memories': {
                 title: 'Memories',
                 subtitle: '2023 • Drama • 105 min',
-                hero: 'https://picsum.photos/1920/1080?random=9'
+                hero: 'https://picsum.photos/1920/1080?random=9',
+                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
             },
             'silence': {
                 title: 'Silence',
                 subtitle: '2023 • Thriller • 98 min',
-                hero: 'https://picsum.photos/1920/1080?random=10'
+                hero: 'https://picsum.photos/1920/1080?random=10',
+                trailer: 'https://www.w3schools.com/html/movie.mp4'
             },
             'journey': {
                 title: 'Journey',
                 subtitle: '2023 • Adventure • 140 min',
-                hero: 'https://picsum.photos/1920/1080?random=11'
+                hero: 'https://picsum.photos/1920/1080?random=11',
+                trailer: 'https://www.w3schools.com/html/mov_bbb.mp4'
             }
         };
 
@@ -1258,13 +1513,51 @@
             const movie = movies[movieId];
             if (!movie) return;
 
+            currentTrailerMovie = movieId;
             document.getElementById('trailer-title').textContent = `${movie.title} - Trailer`;
-            document.getElementById('video-placeholder').innerHTML = `
-                🎬 ${movie.title} Trailer<br>
-                <small style="font-size: 16px; opacity: 0.7;">Video player would be embedded here</small>
+            document.getElementById('trailer-movie-title').textContent = `${movie.title} 트레일러`;
+            
+            // 비디오 플레이어 초기화
+            const videoPlayer = document.getElementById('video-player');
+            const videoPlaceholder = document.getElementById('video-placeholder');
+            
+            videoPlayer.innerHTML = `
+                <div class="video-placeholder" id="video-placeholder">
+                    <button class="play-button">▶</button>
+                    <div style="font-size: 24px; margin-bottom: 8px;">${movie.title} 트레일러</div>
+                    <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
+                </div>
             `;
             
             showPage('trailer-page');
+        }
+
+        // 트레일러 재생 함수
+        function playTrailer() {
+            if (!currentTrailerMovie) return;
+            
+            const movie = movies[currentTrailerMovie];
+            const videoPlayer = document.getElementById('video-player');
+            
+            // 비디오 엘리먼트 생성
+            videoPlayer.innerHTML = `
+                <video class="video-element" controls autoplay>
+                    <source src="${movie.trailer}" type="video/mp4">
+                    <p>브라우저가 비디오 재생을 지원하지 않습니다.</p>
+                </video>
+            `;
+            
+            // 비디오 로드 에러 처리
+            const video = videoPlayer.querySelector('video');
+            video.onerror = function() {
+                videoPlayer.innerHTML = `
+                    <div class="video-placeholder">
+                        <div style="font-size: 24px; margin-bottom: 16px;">⚠️</div>
+                        <div style="font-size: 18px; margin-bottom: 8px;">트레일러 로딩 실패</div>
+                        <small style="font-size: 14px; opacity: 0.7;">비디오를 불러올 수 없습니다</small>
+                    </div>
+                `;
+            };
         }
 
         // 수량 변경
