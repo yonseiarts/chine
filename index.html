@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -129,12 +128,12 @@
 
         .slide:nth-child(1) {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Diaspora.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=1') center/cover;
         }
 
         .slide:nth-child(2) {
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/fish bowl.jpg') center/cover;
+                        url('https://picsum.photos/1920/1080?random=2') center/cover;
         }
 
         .slide-content {
@@ -335,8 +334,8 @@
         .product-image { height: 240px; }
         .award-image { aspect-ratio: 2/3; }
 
-        .movie-image.diaspora { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Diaspora2.jpg'); }
-        .movie-image.fishbowl { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/fish bowl2.jpg'); }
+        .movie-image.diaspora { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/디아스포라.jpg'); }
+        .movie-image.fishbowl { background-image: url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/어항.jpg'); }
         .movie-image.spring-dreams { background-image: url('https://picsum.photos/400/600?random=7'); }
         .movie-image.urban-tales { background-image: url('https://picsum.photos/400/600?random=8'); }
         .movie-image.memories { background-image: url('https://picsum.photos/400/600?random=9'); }
@@ -908,6 +907,11 @@
             background: rgba(0, 0, 0, 0.5);
         }
 
+        /* 데스크톱에서는 그리드 표시, 모바일에서는 슬라이드 표시 */
+        @media (min-width: 901px) {
+            .mobile-slide-container { display: none !important; }
+        }
+
         /* 모바일 전용 스타일 개선 */
         @media (max-width: 900px) {
             .slide-content {
@@ -915,18 +919,12 @@
             }
             
             .slide-title { font-size: 42px; }
-            .grid-2, .grid-4 { 
-                display: none; /* 모바일에서 그리드 숨김 */
-            }
-            .grid-5 { 
-                display: none; /* 모바일에서 그리드 숨김 */
-            }
-            .grid-auto {
-                display: none; /* 모바일에서 그리드 숨김 */
+            .grid-2, .grid-4, .grid-5, .grid-auto { 
+                display: none !important; /* 모바일에서 그리드 완전히 숨김 */
             }
             
             /* 모바일에서 슬라이드 컨테이너 표시 */
-            .mobile-slide-container { display: block; }
+            .mobile-slide-container { display: block !important; }
             .slide-indicator { display: flex; }
             
             .product-detail { grid-template-columns: 1fr; gap: 40px; }
@@ -1290,6 +1288,220 @@
                             <div class="movie-year">2024</div>
                             <div class="movie-buttons">
                                 <button class="btn" onclick="event.stopPropagation(); showTrailer('diaspora')">Play Trailer</button>
+                            </div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showMovieDetail('fishbowl')">
+                            <div class="card-image movie-image fishbowl"></div>
+                            <div class="movie-status">Featured Film</div>
+                            <div class="movie-title">어항</div>
+                            <div class="movie-year">2024</div>
+                            <div class="movie-buttons">
+                                <button class="btn" onclick="event.stopPropagation(); showTrailer('fishbowl')">Play Trailer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">어항 Collection</h2>
+                    </div>
+                    <a class="section-link" onclick="showCollection('fishbowl')">View All</a>
+                </div>
+                <!-- 데스크톱 그리드 -->
+                <div class="grid-4">
+                    <div class="card" onclick="showProductDetail('fishbowl-figurine')">
+                        <div class="card-image product-image">
+                            <div class="card-placeholder">🐠</div>
+                        </div>
+                        <div class="product-status">Pre-Order Now</div>
+                        <div class="product-name">어항 Fish Figurine</div>
+                        <div class="product-price">$45 <span class="product-currency">USD</span></div>
+                    </div>
+                    <div class="card" onclick="showProductDetail('fishbowl-tshirt')">
+                        <div class="card-image product-image">
+                            <div class="card-placeholder">👕</div>
+                        </div>
+                        <div class="product-status">Pre-Order Now</div>
+                        <div class="product-name">어항 T-Shirt</div>
+                        <div class="product-price">$28 <span class="product-currency">USD</span></div>
+                    </div>
+                    <div class="card" onclick="showProductDetail('fishbowl-mug')">
+                        <div class="card-image product-image">
+                            <div class="card-placeholder">☕</div>
+                        </div>
+                        <div class="product-status">Pre-Order Now</div>
+                        <div class="product-name">어항 Coffee Mug</div>
+                        <div class="product-price">$18 <span class="product-currency">USD</span></div>
+                    </div>
+                    <div class="card" onclick="showProductDetail('fishbowl-notebook')">
+                        <div class="card-image product-image">
+                            <div class="card-placeholder">📓</div>
+                        </div>
+                        <div class="product-status">Pre-Order Now</div>
+                        <div class="product-name">어항 Notebook</div>
+                        <div class="product-price">$22 <span class="product-currency">USD</span></div>
+                    </div>
+                </div>
+                <!-- 모바일 슬라이드 -->
+                <div class="mobile-slide-container">
+                    <div class="mobile-slide-wrapper">
+                        <div class="mobile-slide-item card" onclick="showProductDetail('fishbowl-figurine')">
+                            <div class="card-image product-image">
+                                <div class="card-placeholder">🐠</div>
+                            </div>
+                            <div class="product-status">Pre-Order Now</div>
+                            <div class="product-name">어항 Fish Figurine</div>
+                            <div class="product-price">$45 <span class="product-currency">USD</span></div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showProductDetail('fishbowl-tshirt')">
+                            <div class="card-image product-image">
+                                <div class="card-placeholder">👕</div>
+                            </div>
+                            <div class="product-status">Pre-Order Now</div>
+                            <div class="product-name">어항 T-Shirt</div>
+                            <div class="product-price">$28 <span class="product-currency">USD</span></div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showProductDetail('fishbowl-mug')">
+                            <div class="card-image product-image">
+                                <div class="card-placeholder">☕</div>
+                            </div>
+                            <div class="product-status">Pre-Order Now</div>
+                            <div class="product-name">어항 Coffee Mug</div>
+                            <div class="product-price">$18 <span class="product-currency">USD</span></div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showProductDetail('fishbowl-notebook')">
+                            <div class="card-image product-image">
+                                <div class="card-placeholder">📓</div>
+                            </div>
+                            <div class="product-status">Pre-Order Now</div>
+                            <div class="product-name">어항 Notebook</div>
+                            <div class="product-price">$22 <span class="product-currency">USD</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="watch-now">
+                <div class="section-header">
+                    <h2 class="section-title">Watch Now</h2>
+                </div>
+                <!-- 데스크톱 그리드 -->
+                <div class="grid-auto">
+                    <div class="card" onclick="showMovieDetail('diaspora')">
+                        <div class="card-image movie-image diaspora"></div>
+                        <div class="movie-status">Now Available</div>
+                        <div class="movie-title">The Diaspora</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('fishbowl')">
+                        <div class="card-image movie-image fishbowl"></div>
+                        <div class="movie-status">Now Available</div>
+                        <div class="movie-title">어항</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('spring-dreams')">
+                        <div class="card-image movie-image spring-dreams"></div>
+                        <div class="movie-status">Now Available</div>
+                        <div class="movie-title">Spring Dreams</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('urban-tales')">
+                        <div class="card-image movie-image urban-tales"></div>
+                        <div class="movie-status">Now Available</div>
+                        <div class="movie-title">Urban Tales</div>
+                    </div>
+                </div>
+                <!-- 모바일 슬라이드 -->
+                <div class="mobile-slide-container">
+                    <div class="mobile-slide-wrapper">
+                        <div class="mobile-slide-item card" onclick="showMovieDetail('diaspora')">
+                            <div class="card-image movie-image diaspora"></div>
+                            <div class="movie-status">Now Available</div>
+                            <div class="movie-title">The Diaspora</div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showMovieDetail('fishbowl')">
+                            <div class="card-image movie-image fishbowl"></div>
+                            <div class="movie-status">Now Available</div>
+                            <div class="movie-title">어항</div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showMovieDetail('spring-dreams')">
+                            <div class="card-image movie-image spring-dreams"></div>
+                            <div class="movie-status">Now Available</div>
+                            <div class="movie-title">Spring Dreams</div>
+                        </div>
+                        <div class="mobile-slide-item card" onclick="showMovieDetail('urban-tales')">
+                            <div class="card-image movie-image urban-tales"></div>
+                            <div class="movie-status">Now Available</div>
+                            <div class="movie-title">Urban Tales</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="awards">
+                <div class="section-header">
+                    <h2 class="section-title">Award Winners</h2>
+                </div>
+                <!-- 데스크톱 그리드 -->
+                <div class="grid-5">
+                    <div class="card" onclick="showMovieDetail('diaspora')">
+                        <div class="card-image award-image diaspora"></div>
+                        <div class="award-status">Now Available</div>
+                        <div class="award-title">The Diaspora</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('fishbowl')">
+                        <div class="card-image award-image fishbowl"></div>
+                        <div class="award-status">Now Available</div>
+                        <div class="award-title">어항</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('memories')">
+                        <div class="card-image award-image memories"></div>
+                        <div class="award-status">Now Available</div>
+                        <div class="award-title">Memories</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('silence')">
+                        <div class="card-image award-image silence"></div>
+                        <div class="award-status">Now Available</div>
+                        <div class="award-title">Silence</div>
+                    </div>
+                    <div class="card" onclick="showMovieDetail('journey')">
+                        <div class="card-image award-image journey"></div>
+                        <div class="award-status">Now Available</div>
+                        <div class="award-title">Journey</div>
+                    </div>
+                </div>
+                <!-- 모바일 슬라이드 -->
+                <div class="mobile-slide-container">
+                    <div class="mobile-slide-wrapper">
+                        <div class="mobile-slide-item small card" onclick="showMovieDetail('diaspora')">
+                            <div class="card-image award-image diaspora"></div>
+                            <div class="award-status">Now Available</div>
+                            <div class="award-title">The Diaspora</div>
+                        </div>
+                        <div class="mobile-slide-item small card" onclick="showMovieDetail('fishbowl')">
+                            <div class="card-image award-image fishbowl"></div>
+                            <div class="award-status">Now Available</div>
+                            <div class="award-title">어항</div>
+                        </div>
+                        <div class="mobile-slide-item small card" onclick="showMovieDetail('memories')">
+                            <div class="card-image award-image memories"></div>
+                            <div class="award-status">Now Available</div>
+                            <div class="award-title">Memories</div>
+                        </div>
+                        <div class="mobile-slide-item small card" onclick="showMovieDetail('silence')">
+                            <div class="card-image award-image silence"></div>
+                            <div class="award-status">Now Available</div>
+                            <div class="award-title">Silence</div>
+                        </div>
+                        <div class="mobile-slide-item small card" onclick="showMovieDetail('journey')">
+                            <div class="card-image award-image journey"></div>
+                            <div class="award-status">Now Available</div>
+                            <div class="award-title">Journey</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main></button>
                             </div>
                         </div>
                         <div class="mobile-slide-item card" onclick="showMovieDetail('fishbowl')">
@@ -1674,16 +1886,16 @@
             'diaspora': {
                 title: 'The Diaspora',
                 subtitle: '2024 • Drama • 120 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=zrk1Dc8XSNs', // ← 실제 YouTube URL로 교체하세요
-                trailerEmbed: 'https://www.youtube.com/embed/zrk1Dc8XSNs?autoplay=1&rel=0&modestbranding=1'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora.jpg',
+                trailer: 'https://www.youtube.com/watch?v=ABC123XYZ', // ← 실제 YouTube URL로 교체하세요
+                trailerEmbed: 'https://www.youtube.com/embed/ABC123XYZ?autoplay=1&rel=0&modestbranding=1'
             },
             'fishbowl': {
                 title: '어항',
                 subtitle: '2024 • Drama • 95 min',
-                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/fish bowl2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=gRtc6tfjykU', // ← 실제 YouTube URL로 교체하세요
-                trailerEmbed: 'https://www.youtube.com/embed/gRtc6tfjykU?autoplay=1&rel=0&modestbranding=1'
+                hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl.jpg',
+                trailer: 'https://www.youtube.com/watch?v=DEF456UVW', // ← 실제 YouTube URL로 교체하세요
+                trailerEmbed: 'https://www.youtube.com/embed/DEF456UVW?autoplay=1&rel=0&modestbranding=1'
             },
             'spring-dreams': {
                 title: 'Spring Dreams',
