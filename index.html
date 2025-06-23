@@ -1486,4 +1486,258 @@
 
             currentTrailerMovie = movieId;
             document.getElementById('trailer-info').textContent = movie.title.toUpperCase();
-            document.getElementById('trailer-movie-title').textContent = `${movie
+            document.getElementById('trailer-movie-title').textContent = `${movie.title} 트레일러`;
+            
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.innerHTML = `
+                <div class="video-placeholder" id="video-placeholder">
+                    <button class="play-button">▶</button>
+                    <div style="font-size: 24px; margin-bottom: 8px;">${movie.title} 트레일러</div>
+                    <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
+                </div>
+            `;
+            
+            showPage('trailer-page');
+        }
+
+        function playTrailer() {
+            const movie = movies[currentTrailerMovie];
+            if (!movie) return;
+
+            const videoPlayer = document.getElementById('video-player');
+            videoPlayer.innerHTML = `
+                <iframe class="video-element" 
+                        src="${movie.trailerEmbed}" 
+                        allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        function minimizeTrailer() {
+            showPage('home');
+        }
+
+        function closeTrailer() {
+            const videoPlayer = document.getElementById('video-player');
+            const movie = movies[currentTrailerMovie];
+            if (movie) {
+                videoPlayer.innerHTML = `
+                    <div class="video-placeholder" id="video-placeholder">
+                        <button class="play-button">▶</button>
+                        <div style="font-size: 24px; margin-bottom: 8px;">${movie.title} 트레일러</div>
+                        <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
+                    </div>
+                `;
+            }
+            showPage('home');
+        }
+
+        function changeQuantity(delta) {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value) + delta;
+            quantity = Math.max(1, Math.min(10, quantity));
+            quantityInput.value = quantity;
+        }
+
+        function addToCart() {
+            if (!currentProduct) return;
+            
+            const product = products[currentProduct];
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            const existingItem = cart.find(item => item.id === currentProduct);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: currentProduct,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            
+            updateCartUI();
+            alert(`${product.name} added to cart!`);
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.classList.toggle('active');
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const totalPrice = document.getElementById('total-price');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <div class="card-placeholder">${item.image}</div>
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} USD</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
+                                <button onclick="removeFromCart('${item.id}')" style="margin-left: 12px; background: none; border: none; color: #ff0000; cursor: pointer;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                totalPrice.textContent = `${total.toFixed(2)} USD`;
+                cartTotal.style.display = 'block';
+            }
+        }
+
+        function updateCartItemQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function checkout() {
+            alert('Checkout functionality would be implemented here!');
+        }
+
+        function showCollection(collectionId) {
+            showSection('shop');
+        }
+
+        // Slider functionality
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
+        }
+
+        function goToSlide(slideIndex) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = slideIndex;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
+        }
+
+        function updateSliderCounter() {
+            document.querySelector('.current-slide').textContent = currentSlide + 1;
+        }
+
+        function resetSliderProgress() {
+            const progressBar = document.querySelector('.timeline-progress');
+            progressBar.style.width = '0%';
+            
+            clearInterval(slideInterval);
+            startSliderProgress();
+        }
+
+        function startSliderProgress() {
+            let progress = 0;
+            const progressBar = document.querySelector('.timeline-progress');
+            
+            slideInterval = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    nextSlide();
+                }
+            }, 80); // 8 seconds total (100 * 80ms)
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slider navigation
+            document.querySelector('.next-btn').addEventListener('click', nextSlide);
+            document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+            
+            // Slider dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+            
+            // ESC key to close trailer
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const trailerPage = document.getElementById('trailer-page');
+                    if (trailerPage.classList.contains('active')) {
+                        closeTrailer();
+                    }
+                }
+            });
+            
+            // Start slider
+            startSliderProgress();
+            
+            // Cart modal click outside to close
+            document.getElementById('cart-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    toggleCart();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
