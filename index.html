@@ -15,7 +15,6 @@
             line-height: 1.3; 
         }
 
-        /* 페이지 전환 시스템 */
         .page { display: none; }
         .page.active { display: block; }
 
@@ -37,10 +36,7 @@
             height: 50px;
         }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
+        .nav-left { display: flex; align-items: center; }
 
         .logo {
             font-size: 14px;
@@ -81,10 +77,7 @@
             position: relative;
         }
 
-        .cart-btn:hover {
-            background: #000000;
-            color: #ffffff;
-        }
+        .cart-btn:hover { background: #000000; color: #ffffff; }
 
         .cart-count {
             position: absolute;
@@ -105,7 +98,7 @@
         .hero-slider {
             position: relative;
             height: 100vh;
-            min-height: 500px; /* 최소 높이 설정 */
+            min-height: 500px;
             margin-top: 50px;
             overflow: hidden;
         }
@@ -128,12 +121,12 @@
 
         .slide:nth-child(1) {
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora.jpg') center/cover;
+                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg') center/cover;
         }
 
         .slide:nth-child(2) {
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
-                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl.jpg') center/cover;
+                        url('https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl2.jpg') center/cover;
         }
 
         .slide-content {
@@ -311,12 +304,11 @@
         .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
         .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
 
-        /* 카드 호버 효과 터치 디바이스에서 제거 */
         .card {
             background: transparent;
             transition: transform 0.3s ease;
             cursor: pointer;
-            -webkit-tap-highlight-color: transparent; /* 터치 시 하이라이트 제거 */
+            -webkit-tap-highlight-color: transparent;
         }
 
         .card:hover { transform: translateY(-8px); }
@@ -408,7 +400,6 @@
         .main-content .btn-primary { background: #000000; color: #ffffff; }
         .main-content .btn-primary:hover { background: transparent; color: #000000; }
 
-        /* 상세페이지 스타일 */
         .detail-page {
             margin-top: 50px;
             min-height: 100vh;
@@ -474,9 +465,7 @@
             backdrop-filter: blur(10px);
         }
 
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
+        .back-btn:hover { background: rgba(255, 255, 255, 0.3); }
 
         .product-detail {
             max-width: 1400px;
@@ -549,9 +538,7 @@
             transition: background 0.3s ease;
         }
 
-        .quantity-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
+        .quantity-btn:hover { background: rgba(0, 0, 0, 0.1); }
 
         .quantity-input {
             border: none;
@@ -575,12 +562,8 @@
             width: 100%;
         }
 
-        .add-to-cart-btn:hover {
-            background: transparent;
-            color: #000000;
-        }
+        .add-to-cart-btn:hover { background: transparent; color: #000000; }
 
-        /* 회사 소개 섹션 스타일 */
         .about-section {
             background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
             padding: 120px 0;
@@ -628,9 +611,7 @@
             margin-top: 64px;
         }
 
-        .stat-item {
-            text-align: center;
-        }
+        .stat-item { text-align: center; }
 
         .stat-number {
             font-size: 40px;
@@ -647,13 +628,60 @@
             font-weight: 600;
         }
 
-        /* 트레일러 비디오 스타일 개선 */
+        .trailer-page {
+            background: #000000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 3000;
+            display: none;
+        }
+
+        .trailer-page.active { display: flex; flex-direction: column; }
+
+        .trailer-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3001;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .trailer-controls { display: flex; gap: 16px; }
+
+        .trailer-close, .trailer-minimize {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
+        }
+
+        .trailer-close:hover, .trailer-minimize:hover { background: rgba(255, 255, 255, 0.2); }
+
+        .trailer-info {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
         .video-player {
             width: 100%;
-            height: 70vh;
+            height: 100vh;
             background: #000000;
-            border-radius: 8px;
-            overflow: hidden;
             position: relative;
             cursor: pointer;
         }
@@ -667,13 +695,11 @@
             justify-content: center;
             color: #ffffff;
             font-size: 24px;
-            background: linear-gradient(45deg, #333333, #555555);
+            background: linear-gradient(45deg, #111111, #222222);
             transition: all 0.3s ease;
         }
 
-        .video-placeholder:hover {
-            background: linear-gradient(45deg, #444444, #666666);
-        }
+        .video-placeholder:hover { background: linear-gradient(45deg, #222222, #333333); }
 
         .play-button {
             width: 80px;
@@ -691,10 +717,7 @@
             justify-content: center;
         }
 
-        .play-button:hover {
-            background: #ffffff;
-            transform: scale(1.1);
-        }
+        .play-button:hover { background: #ffffff; transform: scale(1.1); }
 
         .video-element {
             width: 100%;
@@ -702,12 +725,8 @@
             object-fit: cover;
         }
 
-        /* iframe 스타일 */
-        iframe.video-element {
-            border: none;
-        }
+        iframe.video-element { border: none; }
 
-        /* 장바구니 모달 */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -721,9 +740,7 @@
             justify-content: center;
         }
 
-        .cart-modal.active {
-            display: flex;
-        }
+        .cart-modal.active { display: flex; }
 
         .cart-content {
             background: #ffffff;
@@ -755,9 +772,7 @@
             cursor: pointer;
         }
 
-        .cart-items {
-            padding: 24px 32px;
-        }
+        .cart-items { padding: 24px 32px; }
 
         .cart-item {
             display: flex;
@@ -775,9 +790,7 @@
             background-position: center;
         }
 
-        .cart-item-info {
-            flex: 1;
-        }
+        .cart-item-info { flex: 1; }
 
         .cart-item-name {
             font-weight: 600;
@@ -841,138 +854,99 @@
 
         .footer-text { color: #666666; font-size: 14px; }
 
-        /* 모바일 전용 스타일 개선 */
-        @media (max-width: 900px) {
-            .slide-content {
-                padding: 0 20px;
-            }
-            
-            .slide-title { font-size: 42px; }
-            .grid-2, .grid-4 { grid-template-columns: 1fr; gap: 24px; }
-            .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .product-detail { grid-template-columns: 1fr; gap: 40px; }
-            .detail-content { padding: 0 20px; }
-            .trailer-container { padding: 40px 20px; }
-            .about-content { padding: 0 20px; }
-            .about-stats { grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
-            .about-title { font-size: 36px; }
-            .about-subtitle { font-size: 18px; margin-bottom: 32px; }
-            
-            /* 슬라이더 컨트롤 모바일 최적화 */
-            .slider-controls {
-                bottom: 20px;
-                right: 20px;
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 16px;
-            }
-            
-            .slider-timeline { width: 120px; }
-            .slider-counter { font-size: 14px; }
-            
-            /* 카드 간격 조정 */
-            .main-content { padding: 0 16px; }
-            .content-section { margin-bottom: 60px; padding-top: 60px; }
-            .section-header { margin-bottom: 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
-        }
-
+        /* 모바일 최적화 - 768px 이하에서만 적용 */
         @media (max-width: 768px) {
             .nav-menu { display: none; }
+            .slide-content { padding: 0 24px; }
+            .slide-title { font-size: 36px; line-height: 1.1; }
+            .slide-year { font-size: 16px; margin-bottom: 24px; }
+            .slide-buttons { flex-direction: column; gap: 12px; max-width: 300px; }
+            .slide-buttons .btn { text-align: center; padding: 12px 24px; }
             
-            /* 히어로 섹션 모바일 최적화 */
-            .slide-title { font-size: 32px; line-height: 1.1; }
-            .slide-year { font-size: 16px; margin-bottom: 32px; }
-            .slide-buttons { flex-direction: column; gap: 12px; }
-            .slide-buttons .btn { text-align: center; }
-            
-            /* 섹션 제목 크기 조정 */
-            .section-title { font-size: 24px; margin-bottom: 8px; }
+            .main-content { padding: 0 20px; }
+            .content-section { margin-bottom: 50px; padding-top: 50px; }
+            .section-header { margin-bottom: 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+            .section-title { font-size: 24px; margin-bottom: 4px; }
             .section-subtitle { font-size: 14px; }
             
-            /* 그리드 레이아웃 모바일 최적화 */
-            .grid-2, .grid-4, .grid-auto { grid-template-columns: 1fr; gap: 20px; }
-            .grid-5 { grid-template-columns: 1fr; gap: 20px; }
+            /* 모바일 그리드 - 2-3열로 깔끔하게 정리 */
+            .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .grid-5 { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .grid-auto { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             
-            /* 카드 스타일 모바일 최적화 */
             .card { margin-bottom: 8px; }
-            .movie-title, .award-title { font-size: 20px; }
-            .product-name { font-size: 15px; }
-            .movie-year { font-size: 14px; margin-bottom: 12px; }
+            .card-image { margin-bottom: 8px; }
+            .movie-title, .award-title { font-size: 13px; margin-bottom: 4px; }
+            .product-name { font-size: 12px; margin-bottom: 4px; }
+            .movie-year { font-size: 11px; margin-bottom: 8px; }
+            .product-price { font-size: 13px; }
+            .movie-buttons { gap: 6px; }
+            .main-content .btn { padding: 6px 12px; font-size: 9px; }
             
-            /* 회사 소개 섹션 모바일 */
-            .about-section { padding: 80px 0; }
+            .about-section { padding: 60px 0; }
+            .about-content { padding: 0 20px; }
             .about-title { font-size: 28px; margin-bottom: 16px; }
-            .about-subtitle { font-size: 16px; margin-bottom: 32px; }
-            .about-description { font-size: 15px; line-height: 1.6; text-align: center; }
-            .about-stats { margin-top: 40px; gap: 24px; }
-            .stat-number { font-size: 32px; }
+            .about-subtitle { font-size: 16px; margin-bottom: 24px; }
+            .about-description { font-size: 14px; line-height: 1.6; text-align: center; }
+            .about-stats { grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+            .stat-number { font-size: 28px; }
+            .stat-label { font-size: 12px; }
             
-            /* 상세페이지 모바일 */
-            .detail-title { font-size: 28px; line-height: 1.1; }
-            .detail-subtitle { font-size: 16px; margin-bottom: 32px; }
+            .slider-controls { 
+                bottom: 20px; 
+                right: 20px; 
+                flex-direction: column; 
+                align-items: flex-end; 
+                gap: 12px; 
+            }
+            .slider-timeline { width: 100px; }
+            .slider-counter { font-size: 12px; }
+            .nav-btn { width: 36px; height: 36px; font-size: 16px; }
+            
+            .detail-content { padding: 0 20px; }
+            .detail-title { font-size: 32px; line-height: 1.1; }
+            .detail-subtitle { font-size: 16px; margin-bottom: 24px; }
             .detail-buttons { flex-direction: column; gap: 12px; }
             
-            /* 장바구니 모달 모바일 */
+            .product-detail { grid-template-columns: 1fr; gap: 40px; padding: 40px 20px; }
+            .product-info h1 { font-size: 32px; }
+            .product-price-large { font-size: 24px; }
+            .product-description { font-size: 14px; }
+            
+            .trailer-header { padding: 16px; }
+            .trailer-close, .trailer-minimize { padding: 6px 12px; font-size: 11px; }
+            
             .cart-content { width: 95%; margin: 20px; }
             .cart-header { padding: 20px; }
             .cart-items { padding: 20px; }
             .cart-total { padding: 20px; }
         }
 
+        /* 480px 이하 - 더 작은 화면 */
         @media (max-width: 480px) {
-            /* 헤더 모바일 최적화 */
             .nav { padding: 0 16px; height: 60px; }
             .logo { font-size: 12px; }
             .cart-btn { padding: 6px 12px; font-size: 10px; }
-            
-            /* 히어로 섹션 작은 화면 */
             .hero-slider { margin-top: 60px; }
+            .slide-content { padding: 0 16px; }
             .slide-title { font-size: 28px; }
             .slide-year { font-size: 14px; }
             .btn { padding: 12px 20px; font-size: 11px; }
-            
-            /* 슬라이더 컨트롤 */
-            .slider-controls { bottom: 16px; right: 16px; }
-            .slider-timeline { width: 100px; }
-            .nav-btn { width: 36px; height: 36px; font-size: 16px; }
-            
-            /* 메인 콘텐츠 */
-            .main-content { padding: 0 12px; }
-            .content-section { margin-bottom: 50px; padding-top: 50px; }
-            .section-title { font-size: 22px; }
-            .section-header { margin-bottom: 24px; }
-            
-            /* 카드 레이아웃 */
-            .card-image { margin-bottom: 12px; }
-            .movie-title, .award-title { font-size: 18px; margin-bottom: 4px; }
-            .product-name { font-size: 14px; }
-            .product-price { font-size: 16px; }
-            .movie-buttons { gap: 8px; }
-            .main-content .btn { padding: 8px 16px; font-size: 10px; }
-            
-            /* 회사 소개 */
-            .about-section { padding: 60px 0; }
+            .main-content { padding: 0 16px; }
+            .section-title { font-size: 20px; }
+            .grid-4, .grid-2 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .grid-5 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .movie-title, .award-title { font-size: 12px; }
+            .product-name { font-size: 11px; }
+            .product-price { font-size: 12px; }
+            .main-content .btn { padding: 4px 8px; font-size: 8px; }
             .about-content { padding: 0 16px; }
             .about-title { font-size: 24px; }
             .about-subtitle { font-size: 15px; }
             .about-description { font-size: 14px; }
-            .stat-number { font-size: 28px; }
-            .stat-label { font-size: 12px; }
-            
-            /* 상세페이지 */
-            .product-detail { padding: 40px 16px; gap: 32px; }
-            .product-info h1 { font-size: 32px; }
-            .product-price-large { font-size: 24px; }
-            .product-description { font-size: 14px; }
-            
-            /* 트레일러 페이지 */
-            .trailer-container { padding: 32px 16px; }
-            .video-player { height: 50vh; }
-            .play-button { width: 60px; height: 60px; font-size: 20px; }
-            
-            /* 장바구니 */
-            .cart-item { flex-direction: column; text-align: center; }
-            .cart-item-image { width: 60px; height: 60px; margin: 0 auto 12px; }
+            .stat-number { font-size: 24px; }
+            .stat-label { font-size: 11px; }
         }
 
         /* 터치 디바이스 최적화 */
@@ -980,12 +954,11 @@
             .card:hover { transform: none; }
             .btn:hover { background: inherit; color: inherit; }
             .nav-link:hover { opacity: 1; }
-            
-            /* 터치 타겟 크기 최적화 */
             .btn { min-height: 44px; }
             .nav-btn { min-width: 44px; min-height: 44px; }
             .cart-btn { min-height: 40px; }
             .quantity-btn { min-width: 44px; min-height: 44px; }
+            .trailer-close, .trailer-minimize { min-height: 44px; }
         }
     </style>
 </head>
@@ -1010,7 +983,6 @@
         </nav>
     </header>
 
-    <!-- 홈페이지 -->
     <div id="home" class="page active">
         <section class="hero-slider">
             <div class="slide active">
@@ -1060,7 +1032,6 @@
         </section>
 
         <main class="main-content">
-            <!-- 회사 소개 섹션 -->
             <section class="about-section" id="about">
                 <div class="about-content">
                     <h2 class="about-title">CHINE FILM</h2>
@@ -1272,7 +1243,6 @@
         </footer>
     </div>
 
-    <!-- 제품 상세페이지 -->
     <div id="product-detail" class="page detail-page">
         <div class="detail-hero" id="product-hero">
             <div class="detail-content">
@@ -1304,7 +1274,6 @@
         </div>
     </div>
 
-    <!-- 영화 상세페이지 -->
     <div id="movie-detail" class="page detail-page">
         <div class="detail-hero" id="movie-hero">
             <div class="detail-content">
@@ -1319,27 +1288,24 @@
         </div>
     </div>
 
-    <!-- 트레일러 페이지 -->
-    <div id="trailer-page" class="page detail-page">
-        <div class="detail-hero" style="height: 30vh; background: #000000;">
-            <div class="detail-content">
-                <button class="back-btn" onclick="showPage('home')">← Back to Home</button>
-                <h1 class="detail-title" id="trailer-title">Movie Trailer</h1>
+    <div id="trailer-page" class="page trailer-page">
+        <div class="trailer-header">
+            <div class="trailer-info" id="trailer-info">영화 트레일러</div>
+            <div class="trailer-controls">
+                <button class="trailer-minimize" onclick="minimizeTrailer()">Minimize</button>
+                <button class="trailer-close" onclick="closeTrailer()">Close</button>
             </div>
         </div>
         
-        <div class="trailer-container">
-            <div class="video-player" id="video-player" onclick="playTrailer()">
-                <div class="video-placeholder" id="video-placeholder">
-                    <button class="play-button">▶</button>
-                    <div style="font-size: 24px; margin-bottom: 8px;" id="trailer-movie-title">영화 트레일러</div>
-                    <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
-                </div>
+        <div class="video-player" id="video-player" onclick="playTrailer()">
+            <div class="video-placeholder" id="video-placeholder">
+                <button class="play-button">▶</button>
+                <div style="font-size: 24px; margin-bottom: 8px;" id="trailer-movie-title">영화 트레일러</div>
+                <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
             </div>
         </div>
     </div>
 
-    <!-- 장바구니 모달 -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
@@ -1357,13 +1323,12 @@
     </div>
 
     <script>
-        // 전역 변수
         let currentSlide = 0;
         let cart = [];
         let currentProduct = null;
         let currentTrailerMovie = null;
+        let slideInterval;
 
-        // 제품 데이터
         const products = {
             'diaspora-hoodie': {
                 name: 'THE DIASPORA Hoodie',
@@ -1415,20 +1380,19 @@
             }
         };
 
-        // 영화 데이터 (실제 YouTube URL 예시)
         const movies = {
             'diaspora': {
                 title: 'The Diaspora',
                 subtitle: '2024 • Drama • 120 min',
                 hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/diaspora2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=zrk1Dc8XSNs', // ← 실제 YouTube URL로 교체하세요
+                trailer: 'https://www.youtube.com/watch?v=zrk1Dc8XSNs',
                 trailerEmbed: 'https://www.youtube.com/embed/zrk1Dc8XSNs?autoplay=1&rel=0&modestbranding=1'
             },
             'fishbowl': {
                 title: '어항',
                 subtitle: '2024 • Drama • 95 min',
                 hero: 'https://raw.githubusercontent.com/yonseiarts/chine-film-images/main/Fish bowl2.jpg',
-                trailer: 'https://www.youtube.com/watch?v=gRtc6tfjykU', // ← 실제 YouTube URL로 교체하세요
+                trailer: 'https://www.youtube.com/watch?v=gRtc6tfjykU',
                 trailerEmbed: 'https://www.youtube.com/embed/gRtc6tfjykU?autoplay=1&rel=0&modestbranding=1'
             },
             'spring-dreams': {
@@ -1468,7 +1432,6 @@
             }
         };
 
-        // 페이지 전환 함수
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
@@ -1476,7 +1439,6 @@
             document.getElementById(pageId).classList.add('active');
         }
 
-        // 섹션으로 스크롤
         function showSection(sectionId) {
             showPage('home');
             setTimeout(() => {
@@ -1487,7 +1449,6 @@
             }, 100);
         }
 
-        // 제품 상세페이지 표시
         function showProductDetail(productId) {
             const product = products[productId];
             if (!product) return;
@@ -1504,7 +1465,6 @@
             showPage('product-detail');
         }
 
-        // 영화 상세페이지 표시
         function showMovieDetail(movieId) {
             const movie = movies[movieId];
             if (!movie) return;
@@ -1520,19 +1480,15 @@
             showPage('movie-detail');
         }
 
-        // 트레일러 페이지 표시
         function showTrailer(movieId) {
             const movie = movies[movieId];
             if (!movie) return;
 
             currentTrailerMovie = movieId;
-            document.getElementById('trailer-title').textContent = `${movie.title} - Trailer`;
+            document.getElementById('trailer-info').textContent = movie.title.toUpperCase();
             document.getElementById('trailer-movie-title').textContent = `${movie.title} 트레일러`;
             
-            // 비디오 플레이어 초기화
             const videoPlayer = document.getElementById('video-player');
-            const videoPlaceholder = document.getElementById('video-placeholder');
-            
             videoPlayer.innerHTML = `
                 <div class="video-placeholder" id="video-placeholder">
                     <button class="play-button">▶</button>
@@ -1544,66 +1500,53 @@
             showPage('trailer-page');
         }
 
-        // 트레일러 재생 함수 (YouTube 지원)
         function playTrailer() {
-            if (!currentTrailerMovie) return;
-            
             const movie = movies[currentTrailerMovie];
+            if (!movie) return;
+
             const videoPlayer = document.getElementById('video-player');
-            
-            // YouTube 임베드가 있으면 YouTube 사용, 없으면 직접 비디오
-            if (movie.trailerEmbed) {
-                // YouTube 임베드
-                videoPlayer.innerHTML = `
-                    <iframe 
-                        class="video-element" 
-                        src="${movie.trailerEmbed}?autoplay=1&rel=0&modestbranding=1"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            videoPlayer.innerHTML = `
+                <iframe class="video-element" 
+                        src="${movie.trailerEmbed}" 
                         allowfullscreen>
-                    </iframe>
-                `;
-            } else {
-                // 직접 비디오 파일
+                </iframe>
+            `;
+        }
+
+        function minimizeTrailer() {
+            showPage('home');
+        }
+
+        function closeTrailer() {
+            const videoPlayer = document.getElementById('video-player');
+            const movie = movies[currentTrailerMovie];
+            if (movie) {
                 videoPlayer.innerHTML = `
-                    <video class="video-element" controls autoplay>
-                        <source src="${movie.trailer}" type="video/mp4">
-                        <p>브라우저가 비디오 재생을 지원하지 않습니다.</p>
-                    </video>
+                    <div class="video-placeholder" id="video-placeholder">
+                        <button class="play-button">▶</button>
+                        <div style="font-size: 24px; margin-bottom: 8px;">${movie.title} 트레일러</div>
+                        <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
+                    </div>
                 `;
-                
-                // 비디오 로드 에러 처리
-                const video = videoPlayer.querySelector('video');
-                if (video) {
-                    video.onerror = function() {
-                        videoPlayer.innerHTML = `
-                            <div class="video-placeholder">
-                                <div style="font-size: 24px; margin-bottom: 16px;">⚠️</div>
-                                <div style="font-size: 18px; margin-bottom: 8px;">트레일러 로딩 실패</div>
-                                <small style="font-size: 14px; opacity: 0.7;">비디오를 불러올 수 없습니다</small>
-                            </div>
-                        `;
-                    };
-                }
             }
+            showPage('home');
         }
 
-        // 수량 변경
         function changeQuantity(delta) {
-            const quantityEl = document.getElementById('quantity');
-            let quantity = parseInt(quantityEl.value) + delta;
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value) + delta;
             quantity = Math.max(1, Math.min(10, quantity));
-            quantityEl.value = quantity;
+            quantityInput.value = quantity;
         }
 
-        // 장바구니에 추가
         function addToCart() {
             if (!currentProduct) return;
-
+            
             const product = products[currentProduct];
             const quantity = parseInt(document.getElementById('quantity').value);
             
             const existingItem = cart.find(item => item.id === currentProduct);
+            
             if (existingItem) {
                 existingItem.quantity += quantity;
             } else {
@@ -1616,191 +1559,184 @@
                 });
             }
             
-            updateCartDisplay();
-            
-            // 장바구니 추가 피드백
-            const btn = document.querySelector('.add-to-cart-btn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Added to Cart!';
-            btn.style.background = '#00aa00';
-            
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '#000000';
-            }, 2000);
+            updateCartUI();
+            alert(`${product.name} added to cart!`);
         }
 
-        // 장바구니 표시 업데이트
-        function updateCartDisplay() {
-            const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = cartCount;
-            
-            if (cartCount === 0) {
-                document.getElementById('cart-count').style.display = 'none';
-            } else {
-                document.getElementById('cart-count').style.display = 'flex';
-            }
-            
-            updateCartModal();
+        function toggleCart() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.classList.toggle('active');
+            updateCartUI();
         }
 
-        // 장바구니 모달 업데이트
-        function updateCartModal() {
-            const cartItemsEl = document.getElementById('cart-items');
-            const cartTotalEl = document.getElementById('cart-total');
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const totalPrice = document.getElementById('total-price');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
             
             if (cart.length === 0) {
-                cartItemsEl.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
-                cartTotalEl.style.display = 'none';
-                return;
-            }
-            
-            cartItemsEl.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div class="cart-item-image">
-                        <div class="card-placeholder">${item.image}</div>
-                    </div>
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${item.price} USD</div>
-                        <div class="cart-item-quantity">
-                            <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
-                            <button class="quantity-btn" onclick="removeFromCart('${item.id}')" style="margin-left: 8px;">🗑️</button>
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartTotal.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <div class="card-placeholder">${item.image}</div>
+                        </div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} USD</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateCartItemQuantity('${item.id}', 1)">+</button>
+                                <button onclick="removeFromCart('${item.id}')" style="margin-left: 12px; background: none; border: none; color: #ff0000; cursor: pointer;">Remove</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('total-price').textContent = `${total} USD`;
-            cartTotalEl.style.display = 'block';
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                totalPrice.textContent = `${total.toFixed(2)} USD`;
+                cartTotal.style.display = 'block';
+            }
         }
 
-        // 장바구니 아이템 수량 업데이트
-        function updateCartItemQuantity(itemId, delta) {
-            const item = cart.find(item => item.id === itemId);
+        function updateCartItemQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
             if (item) {
-                item.quantity = Math.max(0, item.quantity + delta);
-                if (item.quantity === 0) {
-                    removeFromCart(itemId);
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
                 } else {
-                    updateCartDisplay();
+                    updateCartUI();
                 }
             }
         }
 
-        // 장바구니에서 제거
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            updateCartDisplay();
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
         }
 
-        // 장바구니 토글
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('active');
-        }
-
-        // 체크아웃
         function checkout() {
-            if (cart.length === 0) return;
-            
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`체크아웃 완료!\n총 금액: ${total} USD\n주문이 처리되었습니다.`);
-            
-            cart = [];
-            updateCartDisplay();
-            toggleCart();
+            alert('Checkout functionality would be implemented here!');
         }
 
-        // 슬라이더 관련 함수들
-        function initSlider() {
+        function showCollection(collectionId) {
+            showSection('shop');
+        }
+
+        // Slider functionality
+        function nextSlide() {
             const slides = document.querySelectorAll('.slide');
-            const totalSlides = slides.length;
             const dots = document.querySelectorAll('.dot');
-            const currentSlideSpan = document.querySelector('.current-slide');
-            const timelineProgress = document.querySelector('.timeline-progress');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            const slideInterval = 5000;
-            let slideTimer;
-            let progressTimer;
-
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentSlide = index;
-                updateSliderDisplay();
-            }
-
-            function nextSlide() {
-                const next = (currentSlide + 1) % totalSlides;
-                showSlide(next);
-            }
-
-            function prevSlide() {
-                const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-                showSlide(prev);
-            }
-
-            function updateSliderDisplay() {
-                currentSlideSpan.textContent = currentSlide + 1;
-                resetProgressBar();
-            }
-
-            function resetProgressBar() {
-                timelineProgress.style.width = '0%';
-                if (progressTimer) clearInterval(progressTimer);
-                let progress = 0;
-                const increment = 100 / (slideInterval / 40);
-                progressTimer = setInterval(() => {
-                    progress += increment;
-                    timelineProgress.style.width = Math.min(progress, 100) + '%';
-                    if (progress >= 100) clearInterval(progressTimer);
-                }, 40);
-            }
-
-            function startAutoSlide() {
-                slideTimer = setInterval(nextSlide, slideInterval);
-            }
-
-            function stopAutoSlide() {
-                if (slideTimer) clearInterval(slideTimer);
-                if (progressTimer) clearInterval(progressTimer);
-            }
-
-            function restartAutoSlide() {
-                stopAutoSlide();
-                startAutoSlide();
-            }
-
-            nextBtn.addEventListener('click', () => { nextSlide(); restartAutoSlide(); });
-            prevBtn.addEventListener('click', () => { prevSlide(); restartAutoSlide(); });
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => { showSlide(index); restartAutoSlide(); });
-            });
-
-            updateSliderDisplay();
-            startAutoSlide();
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
         }
 
-        // 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            initSlider();
-            updateCartDisplay();
-            console.log('🎬 CHINE FILM 웹사이트가 성공적으로 로드되었습니다!');
-        });
+        function prevSlide() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
+        }
 
-        // 모달 외부 클릭 시 닫기
-        document.getElementById('cart-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                toggleCart();
-            }
+        function goToSlide(slideIndex) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = slideIndex;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            updateSliderCounter();
+            resetSliderProgress();
+        }
+
+        function updateSliderCounter() {
+            document.querySelector('.current-slide').textContent = currentSlide + 1;
+        }
+
+        function resetSliderProgress() {
+            const progressBar = document.querySelector('.timeline-progress');
+            progressBar.style.width = '0%';
+            
+            clearInterval(slideInterval);
+            startSliderProgress();
+        }
+
+        function startSliderProgress() {
+            let progress = 0;
+            const progressBar = document.querySelector('.timeline-progress');
+            
+            slideInterval = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    nextSlide();
+                }
+            }, 80); // 8 seconds total (100 * 80ms)
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slider navigation
+            document.querySelector('.next-btn').addEventListener('click', nextSlide);
+            document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+            
+            // Slider dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+            
+            // ESC key to close trailer
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const trailerPage = document.getElementById('trailer-page');
+                    if (trailerPage.classList.contains('active')) {
+                        closeTrailer();
+                    }
+                }
+            });
+            
+            // Start slider
+            startSliderProgress();
+            
+            // Cart modal click outside to close
+            document.getElementById('cart-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    toggleCart();
+                }
+            });
         });
     </script>
 </body>
