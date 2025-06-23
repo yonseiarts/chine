@@ -992,8 +992,8 @@
                         <h1 class="slide-title">The Diaspora</h1>
                         <div class="slide-year">2024</div>
                         <div class="slide-buttons">
-                            <button class="btn btn-primary" onclick="showMovieDetail('diaspora')">Watch Now</button>
-                            <button class="btn" onclick="showTrailer('diaspora')">Play Trailer</button>
+                            <button class="btn btn-primary slide-watch-btn">Watch Now</button>
+                            <button class="btn slide-trailer-btn">Play Trailer</button>
                         </div>
                     </div>
                 </div>
@@ -1006,8 +1006,8 @@
                         <h1 class="slide-title">어항</h1>
                         <div class="slide-year">2024</div>
                         <div class="slide-buttons">
-                            <button class="btn btn-primary" onclick="showMovieDetail('fishbowl')">Watch Now</button>
-                            <button class="btn" onclick="showTrailer('fishbowl')">Play Trailer</button>
+                            <button class="btn btn-primary slide-watch-btn">Watch Now</button>
+                            <button class="btn slide-trailer-btn">Play Trailer</button>
                         </div>
                     </div>
                 </div>
@@ -1433,10 +1433,35 @@
         };
 
         function showPage(pageId) {
+            // 모든 페이지 비활성화
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            document.getElementById(pageId).classList.add('active');
+            
+            // 지정된 페이지만 활성화
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // 홈페이지로 이동할 때 슬라이더 리셋
+            if (pageId === 'home') {
+                setTimeout(() => {
+                    currentSlide = 0;
+                    const slides = document.querySelectorAll('.slide');
+                    const dots = document.querySelectorAll('.dot');
+                    
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    if (slides[0]) slides[0].classList.add('active');
+                    if (dots[0]) dots[0].classList.add('active');
+                    
+                    updateSliderCounter();
+                    updateSliderButtons();
+                    console.log('Reset to first slide - The Diaspora');
+                }, 100);
+            }
         }
 
         function showSection(sectionId) {
@@ -1481,32 +1506,49 @@
         }
 
         function showTrailer(movieId) {
-            console.log('Showing trailer for:', movieId); // 디버깅용
+            console.log('=== showTrailer called ===');
+            console.log('Requested movieId:', movieId);
+            
             const movie = movies[movieId];
             if (!movie) {
-                console.error('Movie not found:', movieId);
+                console.error('Movie not found for ID:', movieId);
+                console.log('Available movies:', Object.keys(movies));
                 return;
             }
 
+            console.log('Found movie:', movie.title);
             currentTrailerMovie = movieId;
+            
+            // 트레일러 헤더 업데이트
             document.getElementById('trailer-info').textContent = movie.title.toUpperCase();
             document.getElementById('trailer-movie-title').textContent = `${movie.title} 트레일러`;
             
+            // 비디오 플레이어 초기화
             const videoPlayer = document.getElementById('video-player');
             videoPlayer.innerHTML = `
-                <div class="video-placeholder" id="video-placeholder">
+                <div class="video-placeholder" id="video-placeholder" onclick="playTrailer()">
                     <button class="play-button">▶</button>
                     <div style="font-size: 24px; margin-bottom: 8px;">${movie.title} 트레일러</div>
                     <small style="font-size: 16px; opacity: 0.7;">클릭하여 트레일러 재생</small>
                 </div>
             `;
             
+            console.log('Trailer page setup complete for:', movie.title);
             showPage('trailer-page');
         }
 
         function playTrailer() {
+            console.log('=== playTrailer called ===');
+            console.log('Current trailer movie:', currentTrailerMovie);
+            
             const movie = movies[currentTrailerMovie];
-            if (!movie) return;
+            if (!movie) {
+                console.error('No movie found for currentTrailerMovie:', currentTrailerMovie);
+                return;
+            }
+
+            console.log('Playing trailer for:', movie.title);
+            console.log('Trailer embed URL:', movie.trailerEmbed);
 
             const videoPlayer = document.getElementById('video-player');
             videoPlayer.innerHTML = `
@@ -1692,25 +1734,45 @@
             document.querySelector('.current-slide').textContent = currentSlide + 1;
         }
 
-        // 새로 추가된 함수
+        // 새로 추가된 함수 - 더 확실한 버튼 설정
         function updateSliderButtons() {
+            console.log('=== updateSliderButtons called ===');
             const slides = document.querySelectorAll('.slide');
-            const currentSlideElement = slides[currentSlide];
-            const movieId = currentSlideElement.getAttribute('data-movie');
             
-            // 현재 슬라이드의 버튼들을 찾아서 onclick 이벤트를 업데이트
-            const watchNowBtn = currentSlideElement.querySelector('.btn-primary');
-            const trailerBtn = currentSlideElement.querySelector('.btn:not(.btn-primary)');
+            // 각 슬라이드별로 버튼 설정
+            slides.forEach((slide, index) => {
+                const slideMovieId = slide.getAttribute('data-movie');
+                const watchBtn = slide.querySelector('.slide-watch-btn');
+                const trailerBtn = slide.querySelector('.slide-trailer-btn');
+                
+                console.log(`Slide ${index}: movieId=${slideMovieId}`);
+                
+                if (watchBtn) {
+                    // 기존 이벤트 리스너 제거
+                    watchBtn.onclick = null;
+                    // 새 이벤트 리스너 추가
+                    watchBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Watch button clicked for:', slideMovieId);
+                        showMovieDetail(slideMovieId);
+                    });
+                }
+                
+                if (trailerBtn) {
+                    // 기존 이벤트 리스너 제거
+                    trailerBtn.onclick = null;
+                    // 새 이벤트 리스너 추가
+                    trailerBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('Trailer button clicked for:', slideMovieId);
+                        showTrailer(slideMovieId);
+                    });
+                }
+            });
             
-            if (watchNowBtn && movieId) {
-                watchNowBtn.onclick = () => showMovieDetail(movieId);
-            }
-            
-            if (trailerBtn && movieId) {
-                trailerBtn.onclick = () => showTrailer(movieId);
-            }
-            
-            console.log('Updated slider buttons for movie:', movieId); // 디버깅용
+            console.log('Current active slide index:', currentSlide);
         }
 
         function resetSliderProgress() {
@@ -1737,8 +1799,40 @@
 
         // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            // 초기 슬라이더 버튼 설정
-            updateSliderButtons();
+            console.log('=== Page loading ===');
+            
+            // 페이지 로드 시 강제로 홈페이지로 리셋
+            showPage('home');
+            
+            // 슬라이더를 첫 번째 슬라이드로 강제 리셋
+            currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            console.log('Found slides:', slides.length);
+            console.log('Found dots:', dots.length);
+            
+            // 모든 슬라이드와 닷을 비활성화
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                console.log(`Slide ${index} data-movie:`, slide.getAttribute('data-movie'));
+            });
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // 첫 번째 슬라이드와 닷만 활성화
+            if (slides[0]) {
+                slides[0].classList.add('active');
+                console.log('Activated first slide:', slides[0].getAttribute('data-movie'));
+            }
+            if (dots[0]) dots[0].classList.add('active');
+            
+            // 슬라이더 카운터 업데이트
+            updateSliderCounter();
+            
+            // 초기 슬라이더 버튼 설정 (약간의 지연 후)
+            setTimeout(() => {
+                updateSliderButtons();
+            }, 100);
             
             // Slider navigation
             document.querySelector('.next-btn').addEventListener('click', nextSlide);
@@ -1768,6 +1862,9 @@
                     toggleCart();
                 }
             });
+            
+            console.log('=== Page initialization complete ===');
+            console.log('Current slide:', currentSlide);
         });
     </script>
 </body>
