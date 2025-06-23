@@ -985,7 +985,7 @@
 
     <div id="home" class="page active">
         <section class="hero-slider">
-            <div class="slide active">
+            <div class="slide active" data-movie="diaspora">
                 <div class="slide-content">
                     <div class="slide-info">
                         <div class="slide-status">Now Available</div>
@@ -999,7 +999,7 @@
                 </div>
             </div>
 
-            <div class="slide">
+            <div class="slide" data-movie="fishbowl">
                 <div class="slide-content">
                     <div class="slide-info">
                         <div class="slide-status">Featured Film</div>
@@ -1036,12 +1036,12 @@
                 <div class="about-content">
                     <h2 class="about-title">CHINE FILM</h2>
                     <p class="about-subtitle">
-                        창의적인 비주얼과 스토리 텔링으로 세상을 변화시키는 독립 영화 제작사
+                        창의적인 스토리텔링으로 세상을 변화시키는 독립 영화 제작사
                     </p>
                     <div class="about-description">
-                        <p>Essence in Secens, CHINE FILM은 2025년에 설립된 독립 영화 제작사로, 혁신적이고 의미 있는 콘텐츠를 통해 관객들에게 새로운 시각과 감동을 전달하고 있습니다. 우리는 다양한 장르와 스타일을 아우르며, 신진 감독들과 함께 창작의 경계를 넓혀가고 있습니다.</p>
+                        <p>CHINE FILM은 2020년에 설립된 독립 영화 제작사로, 혁신적이고 의미 있는 콘텐츠를 통해 관객들에게 새로운 시각과 감동을 전달하고 있습니다. 우리는 다양한 장르와 스타일을 아우르며, 신진 감독들과 함께 창작의 경계를 넓혀가고 있습니다.</p>
                         
-                        <p>각 작품은 단순한 엔터테인먼트를 넘어서 사회적 메시지와 장면의 본질에 대한 깊이 있는 탐구를 담고 있습니다. 디아스포라, 어항과 같은 대표작들을 통해 현대 사회의 복잡한 이슈들을 섬세하게 다루며, 국내외 영화제에서 주목받는 작품들을 지속적으로 선보이고 있습니다.</p>
+                        <p>각 작품은 단순한 엔터테인먼트를 넘어서 사회적 메시지와 인간의 본질에 대한 깊이 있는 탐구를 담고 있습니다. 디아스포라, 어항과 같은 대표작들을 통해 현대 사회의 복잡한 이슈들을 섬세하게 다루며, 국내외 영화제에서 주목받는 작품들을 지속적으로 선보이고 있습니다.</p>
                     </div>
                     
                     <div class="about-stats">
@@ -1481,8 +1481,12 @@
         }
 
         function showTrailer(movieId) {
+            console.log('Showing trailer for:', movieId); // 디버깅용
             const movie = movies[movieId];
-            if (!movie) return;
+            if (!movie) {
+                console.error('Movie not found:', movieId);
+                return;
+            }
 
             currentTrailerMovie = movieId;
             document.getElementById('trailer-info').textContent = movie.title.toUpperCase();
@@ -1646,6 +1650,7 @@
             dots[currentSlide].classList.add('active');
             
             updateSliderCounter();
+            updateSliderButtons(); // 새로 추가
             resetSliderProgress();
         }
 
@@ -1662,6 +1667,7 @@
             dots[currentSlide].classList.add('active');
             
             updateSliderCounter();
+            updateSliderButtons(); // 새로 추가
             resetSliderProgress();
         }
 
@@ -1678,11 +1684,33 @@
             dots[currentSlide].classList.add('active');
             
             updateSliderCounter();
+            updateSliderButtons(); // 새로 추가
             resetSliderProgress();
         }
 
         function updateSliderCounter() {
             document.querySelector('.current-slide').textContent = currentSlide + 1;
+        }
+
+        // 새로 추가된 함수
+        function updateSliderButtons() {
+            const slides = document.querySelectorAll('.slide');
+            const currentSlideElement = slides[currentSlide];
+            const movieId = currentSlideElement.getAttribute('data-movie');
+            
+            // 현재 슬라이드의 버튼들을 찾아서 onclick 이벤트를 업데이트
+            const watchNowBtn = currentSlideElement.querySelector('.btn-primary');
+            const trailerBtn = currentSlideElement.querySelector('.btn:not(.btn-primary)');
+            
+            if (watchNowBtn && movieId) {
+                watchNowBtn.onclick = () => showMovieDetail(movieId);
+            }
+            
+            if (trailerBtn && movieId) {
+                trailerBtn.onclick = () => showTrailer(movieId);
+            }
+            
+            console.log('Updated slider buttons for movie:', movieId); // 디버깅용
         }
 
         function resetSliderProgress() {
@@ -1709,6 +1737,9 @@
 
         // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // 초기 슬라이더 버튼 설정
+            updateSliderButtons();
+            
             // Slider navigation
             document.querySelector('.next-btn').addEventListener('click', nextSlide);
             document.querySelector('.prev-btn').addEventListener('click', prevSlide);
